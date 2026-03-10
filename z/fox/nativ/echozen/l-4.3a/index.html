@@ -30,6 +30,16 @@
         window.clickbank = { vendor: "echozen" }
         </script>
         <script src="https://scripts.clickbank.net/hop.min.js" defer></script>
+  <!-- Tracking Script (Unified) -->
+  <script type="text/javascript">
+    (function () {
+      const currentDomain = window.location.hostname.replace(/^www\./, '');
+      const trackScript = document.createElement('script');
+      trackScript.type = 'text/javascript';
+      trackScript.src = `https://lp.${currentDomain}/track.js`;
+      document.head.appendChild(trackScript);
+    })();
+  </script>
         <script>
     </script>
 
