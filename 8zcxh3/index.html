@@ -404,12 +404,20 @@
                 try {
                     const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
                     const allLinks = iframeDoc.querySelectorAll("a");
-
-                    if (player && typeof player.urlUpdater === 'function') {
-                        for (const link of allLinks) {
-                            let url = await player.urlUpdater(link.href);
-                            link.href = url;
+                    const urlParams = new URLSearchParams(window.location.search);
+                    for (const link of allLinks) {
+                        let url = link.href;
+                        if (player && typeof player.urlUpdater === 'function') {
+                            url = await player.urlUpdater(url);
                         }
+                        if (urlParams.toString()) {
+                            try {
+                                const u = new URL(url);
+                                urlParams.forEach(function(value, key) { u.searchParams.set(key, value); });
+                                url = u.toString();
+                            } catch(e2) {}
+                        }
+                        link.href = url;
                     }
                 } catch (e) {
                     console.error("Erro ao atualizar links do iframe", e);
