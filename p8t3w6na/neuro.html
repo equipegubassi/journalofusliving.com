@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <base target="_top">
+    <title>Bottles</title>
+    <style>
+        :root {
+            --bg: #ffffff;
+            --ink: #231f20;
+            --violet-1: #6B2D8B;
+            --violet-2: #8B3DAF;
+            --violet-3: #9B4EC0;
+            --border: #8B3DAF;
+            --green: #0cad60;
+            --yellow: #ffde59;
+            --red: #f53040;
+            --muted: #6e6e6e;
+        }
+
+        /* RESET & BASE */
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            font-family: Ubuntu, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--ink)
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block
+        }
+
+        s {
+            color: var(--red)
+        }
+
+        small {
+            color: #555
+        }
+
+        /* LAYOUT */
+        .ofertas-container {
+            display: flex;
+            gap: 18px;
+            justify-content: center;
+            align-items: stretch;
+            padding: 18px;
+            flex-wrap: wrap;
+        }
+
+        /* CARD BASE */
+        .card {
+            position: relative;
+            width: 100%;
+            max-width: 360px;
+            background: #fff;
+            border: 2px solid var(--border);
+            border-radius: 14px;
+            padding: 14px 14px 16px;
+            text-align: center;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, .08);
+        }
+
+        /* SIDE CARDS HEADER (faixa roxa no topo) */
+        .card--side::before {
+            display: flex;
+            content: "";
+            position: absolute;
+            inset: 0 0 auto 0;
+            height: 32px;
+            background: linear-gradient(#6B2D8B, #8B3DAF);
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+        }
+
+        .card__kicker {
+            top: -14px;
+            position: relative;
+            z-index: 1;
+            font-weight: 700;
+            font-size: 20px;
+            color: #fff;
+            letter-spacing: .4px;
+            text-transform: capitalize;
+        }
+
+        .card__kicker-less {
+            top: -14px;
+            position: relative;
+            z-index: 1;
+            font-weight: 700;
+            font-size: 20px;
+            color: #fff;
+            letter-spacing: .4px;
+            text-transform: capitalize;
+        }
+
+        .card__kickermain {
+            position: relative;
+            z-index: 1;
+            background: linear-gradient(135deg, #e6a800 0%, #cc9500 50%, #e6a800 100%);
+            text-shadow: 0em 0.1em 0.1em rgb(0 0 0);
+            padding: 10px 16px;
+            font-weight: 900;
+            font-size: 24px;
+            color: #fff;
+            letter-spacing: .5px;
+            text-transform: uppercase;
+            border-radius: 0;
+            box-shadow: 0 4px 12px rgba(204, 149, 0, 0.5);
+        }
+
+        /* CENTER CARD (BEST VALUE) */
+        .card--best {
+            background: linear-gradient(180deg, #6B2D8B 0%, #8B3DAF 50%, #6B2D8B 100%);
+            border: 3px solid #e6a800;
+            padding: 0 0 14px;
+            box-shadow: 0 8px 24px rgba(107, 45, 139, 0.4), 0 0 20px rgba(230, 168, 0, 0.4);
+        }
+
+        .card--best .card__inner {
+            background: transparent;
+            padding: 14px 16px 18px;
+            border-radius: 15px;
+            color: #fff;
+        }
+
+        /* TITLES */
+        .h3 {
+            margin: 10px 0 4px;
+            font-size: 35px;
+            font-weight: 900;
+            letter-spacing: .5px;
+        }
+
+        .h3--xl {
+            font-size: 44px;
+            line-height: 1.05;
+            text-transform: uppercase;
+            text-shadow: 0 .08em .08em rgba(0, 0, 0, .45)
+        }
+
+        .sub {
+            font-size: 20px;
+            color: #2e2e2e;
+            margin-top: 2px;
+            font-weight: 400;
+            text-align: center;
+        }
+
+        .sub-main {
+            font-size: 24px;
+            color: #2e2e2e;
+            margin-top: 2px;
+            text-shadow: .08em .08em .08em rgba(0, 0, 0, .6);
+        }
+
+        /* PRODUCT IMAGE */
+        .pote {
+            width: 72%;
+            margin: 14px auto 6px
+        }
+
+        /* PRICES */
+        .was {
+            font-weight: 900;
+            font-size: 28px;
+            color: var(--red);
+            margin: 6px 0;
+            -webkit-text-stroke-width: 1px;
+            -webkit-text-stroke-color: rgba(0, 0, 0, 1);
+            stroke: rgba(0, 0, 0, 1);
+        }
+
+        .now {
+            font-weight: 900;
+            margin: 0;
+            text-shadow: .08em .08em .08em rgba(0, 0, 0, .6);
+            -webkit-text-stroke: 2px #000;
+        }
+
+        .now--yellow {
+            font-size: 48px;
+            color: var(--yellow);
+        }
+
+        .now--green {
+            font-size: 64px;
+            color: var(--green);
+            -webkit-text-stroke-width: 1px;
+            -webkit-text-stroke-color: rgba(255, 255, 255, 1);
+        }
+
+        .ship {
+            font-weight: 900;
+            margin: 8px 0 10px;
+            letter-spacing: .3px
+        }
+
+        /* ícone de check nas bullets */
+        .bullets {
+            list-style: none;
+            padding: 0;
+            margin: 8px auto 10px;
+            width: 88%;
+            text-align: left
+        }
+
+        .bullets li {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin: 7px 0;
+            font-weight: 800
+        }
+
+        .check {
+            font-size: 16px;
+            line-height: 1;
+            flex: 0 0 18px;
+            display: inline-block
+        }
+
+        .check--yellow {
+            color: #ffd700;
+            filter: drop-shadow(0 1px 0 rgba(0, 0, 0, .35))
+        }
+
+        .check--violet {
+            color: #6B2D8B
+        }
+
+        .check--black {
+            color: #000
+        }
+
+        .check--green {
+            color: #00bf63
+        }
+
+        /* BUTTONS */
+        .btn {
+            display: block;
+            text-decoration: none;
+            text-align: center;
+            font-size: 25px;
+            font-weight: 900;
+            padding: 14px 18px;
+            border-radius: 8px;
+            margin: 12px auto 8px;
+            box-shadow: 0 4px 0 #4a1d60, 0 6px 12px rgba(107, 45, 139, 0.3);
+            color: #fff;
+            background: linear-gradient(#8B3DAF 50%, #6B2D8B 51%);
+        }
+
+        .btn--green {
+            background: linear-gradient(#00bf63 50%, #04ac5b 51%);
+            color: #fff;
+            border: 2px solid #04ac5b;
+        }
+
+        .btn:active {
+            transform: translateY(1px)
+        }
+
+        /* FOOT (cards) */
+        .cards-pay {
+            width: 80%;
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            margin: 10px auto;
+        }
+
+        .pay {
+            font-size: 12px;
+            font-weight: 700;
+            padding: .25em .45em;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background: #fff
+        }
+
+        .total {
+            margin-top: 8px;
+            font-weight: 900
+        }
+
+        .total s {
+            color: #000;
+            opacity: .8
+        }
+
+        /* SPECIFICS - CENTER */
+        .card--best .h3--xl {
+            color: #00BF63
+        }
+
+        /* RESPONSIVE */
+        @media (max-width:900px) {
+            .card--best {
+                order: 1
+            }
+
+            .card--left {
+                order: 2
+            }
+
+            .card--right {
+                order: 3
+            }
+
+            .mobile {
+                display: flex;
+            }
+
+            .card {
+                max-width: 100%;
+            }
+
+            .pote-mobile {
+                width: 50%;
+            }
+
+            .now--green {
+                font-size: 36px;
+            }
+
+            .now--yellow {
+                font-size: 28px;
+            }
+
+            .h3 {
+                font-size: 28px;
+            }
+
+            .h3--xl {
+                font-size: 32px;
+            }
+
+            .pote {
+                width: 100%;
+            }
+
+            .ship {
+                font-size: 15px;
+            }
+
+            .bullets li {
+                display: flex;
+                justify-content: flex-start;
+                flex-direction: row;
+                align-items: flex-start;
+                font-size: 12px;
+            }
+        }
+
+        /* Animação de "revelação + salto" e depois pausa curta antes de repetir */
+        .surprise-bounce {
+            display: inline-block;
+            transform-origin: center bottom;
+            text-shadow: 0 2px 0 #000, 0 0 18px rgba(244, 190, 16, .45);
+            animation: surprise-pop 6s cubic-bezier(.34, 1.56, .64, 1) .2s infinite both;
+            will-change: transform;
+        }
+
+        @keyframes surprise-pop {
+            0% {
+                transform: translateY(24px) scale(.6) rotate(-2deg);
+                opacity: 0;
+            }
+
+            16% {
+                transform: translateY(-8px) scale(1.15) rotate(0);
+                opacity: 1;
+            }
+
+            22% {
+                transform: translateY(0) scale(1.00);
+            }
+
+            25% {
+                transform: translateY(-3px) scale(1.03);
+            }
+
+            28% {
+                transform: translateY(0) scale(1.00);
+            }
+
+            100% {
+                transform: translateY(0) scale(1.00);
+                opacity: 1;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .surprise-bounce {
+                animation: none;
+            }
+        }
+    </style>
+    <style>
+        /* Estilos base para a seção de garantia */
+        .guarantee-section {
+            background-color: #f4f7f9;
+            padding: 60px 20px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: #333;
+        }
+
+        .guarantee-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .guarantee-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1a2a4b;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .guarantee-title .red-highlight {
+            color: #c9302c;
+        }
+
+        .guarantee-text {
+            font-size: 1rem;
+            line-height: 1.6;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .guarantee-text p {
+            margin-bottom: 20px;
+        }
+
+        .guarantee-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            width: 100%;
+        }
+
+        .guarantee-badge {
+            flex-shrink: 0;
+            width: 200px;
+        }
+
+        .guarantee-badge img {
+            width: 100%;
+            height: auto;
+        }
+
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .trust-badges img {
+            height: 50px;
+            object-fit: contain;
+        }
+
+        @media (max-width: 768px) {
+            .guarantee-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .guarantee-badge {
+                width: 150px;
+            }
+
+            .guarantee-text {
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .guarantee-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ofertas-container">
+
+        <!-- LEFT: 2 bottles -->
+        <article class="card card--side card--left">
+            <div class="card__kicker-less">Basic</div>
+            <div class="mobile">
+                <div class="pote-mobile">
+                    <div class="h3">2 BOTTLES</div>
+                    <div class="sub">60 DAY SUPPLY</div>
+                    <img class="pote" src="images/2.png" alt="2 bottles">
+                </div>
+                <div class="pote-mobile">
+                    <div style="display: flex; justify-content: center; align-items: center;">
+                        <div class="was"><s>$217</s></div>
+                        <p class="now now--yellow">$177</p>
+                    </div>
+
+                    <div class="ship">+ <strong>$9,99</strong> SHIPPING</div>
+
+                    <ul class="bullets">
+                        <li style="color: #6B2D8B"><i class="fa-solid fa-circle-check check check--violet"
+                                aria-hidden="true"></i>YOU SAVE $28!
+                        </li>
+                        <li><i class="fa-solid fa-circle-check check check--black" aria-hidden="true"></i>15% DISCOUNT
+                        </li>
+                        <li><i class="fa-solid fa-circle-check check check--black" aria-hidden="true"></i>90 DAYS
+                            GUARANTEE
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <a class="btn" href="#" data-click-path="/click/1">BUY NOW</a>
+
+            <div class="cards-pay">
+                <img src="images/cards.webp" alt="">
+            </div>
+            <div class="total">Total: <s>$217</s> <strong>$168</strong> <br><small>+ $9.99 SHIPPING</small></div>
+        </article>
+
+        <!-- CENTER: 6 bottles (BEST VALUE) -->
+        <article class="card card--best">
+            <div class="card__kickermain">BEST VALUE!</div>
+            <div class="card__inner">
+                <div class="mobile">
+                    <div class="pote-mobile">
+                        <div class="h3 h3--xl surprise-bounce">6 BOTTLES</div>
+                        <div class="sub-main" style="color:white">180 DAY SUPPLY</div>
+                        <img class="pote" src="images/6.png" alt="6 bottles">
+                    </div>
+                    <div class="pote-mobile">
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <div class="was"><s style="text-decoration-color: black;">$588</s></div>
+                            <p class="now now--green">$294</p>
+                        </div>
+                        <div class="ship"><strong>FREE <span style="color: white;">SHIPPING</span></strong></div>
+
+                        <ul class="bullets">
+                            <li style="color:#ffd700;"><i class="fa-solid fa-circle-check check check--yellow"
+                                    aria-hidden="true"></i>YOU SAVE
+                                $294
+                            </li>
+                            <li><i class="fa-solid fa-circle-check check check--green" aria-hidden="true"></i>50%
+                                DISCOUNT
+                            </li>
+                            <li><i class="fa-solid fa-circle-check check check--green" aria-hidden="true"></i>3 FREE
+                                BOTTLES
+                            </li>
+                        </ul>
+                        <div class="sub" style="color:var(--yellow);margin:10px 0 4px;-webkit-text-stroke: 0.5px #000">
+                            180
+                            DAY
+                            GUARANTEE</div>
+                        <div class="sub surprise-bounce" style="color:#5CE1E6;-webkit-text-stroke: 0.5px #000">+SURPRISE
+                            🎁
+                        </div>
+                    </div>
+                </div>
+                <a class="btn btn--green" href="#" data-click-path="/click/2">BUY NOW</a>
+
+                <div class="cards-pay">
+                    <img src="cards.webp" alt="">
+                </div>
+                <div class="sub" style="color:#e0c9e8; margin-top:8px; -webkit-text-stroke: 0.5px #000">
+                    90 DAYS GUARANTEE <br><strong style="color: var(--yellow);">+FREE SHIPPING</strong>
+                </div>
+            </div>
+        </article>
+
+        <!-- RIGHT: 3 bottles -->
+        <article class="card card--side card--right">
+            <div class="card__kicker">Good Value</div>
+            <div class="mobile">
+                <div class="pote-mobile">
+
+                    <div class="h3">3 BOTTLES</div>
+                    <div class="sub">90 DAY SUPPLY</div>
+                    <img class="pote" src="images/3.png" alt="3 bottles">
+                </div>
+                <div class="pote-mobile">
+                    <div style="display: flex; justify-content: center; align-items: center;">
+                        <div class="was"><s>$294</s></div>
+                        <p class="now now--yellow">$217</p>
+                    </div>
+                    <div class="ship"><strong>FREE SHIPPING</strong></div>
+
+                    <ul class="bullets">
+                        <li style="color: #6B2D8B;"><i class="fa-solid fa-circle-check check check--violet"
+                                aria-hidden="true"></i>YOU SAVE $98!
+                        </li>
+                        <li><i class="fa-solid fa-circle-check check check--black" aria-hidden="true"></i>1 FREE BOTTLE
+                        </li>
+                        <li><i class="fa-solid fa-circle-check check check--black" aria-hidden="true"></i>30% DISCOUNT
+                        </li>
+                        <li><i class="fa-solid fa-circle-check check check--black" aria-hidden="true"></i>90 DAYS
+                            GUARANTEE
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <a class="btn" href="#" data-click-path="/click/3">BUY NOW</a>
+
+            <div class="cards-pay">
+                <img src="cards.webp" alt="">
+            </div>
+            <div class="total">Total: <s>$294</s> <strong>$217</strong> <br><small><span
+                        style="color: red;">+FREE</span> SHIPPING</small></div>
+        </article>
+
+    </div>
+    <section class="guarantee-section">
+        <div class="guarantee-container">
+            <h2 class="guarantee-title">
+                100% Satisfaction or Your Money Back <br>
+                <span class="red-highlight">60-Day Unconditional Guarantee</span>
+            </h2>
+            <div class="guarantee-content">
+                <div class="guarantee-badge">
+                    <img src="images/guarantee-badge.webp" alt="Guarantee Badge">
+                </div>
+                <div class="guarantee-text">
+                    <p>We're so certain that SonusZen will give you remarkable results that we're willing to shoulder
+                        all the risk for a full 60 days. From the moment your order arrives, start taking SonusZen
+                        daily and pay close attention to how you feel. Within just a few days, you may notice the
+                        ringing starting to fade and better clarity. Continue for a few weeks or months, and you will feel like your
+                        hearing has returned to its healthiest and sharpest self.</p>
+                    <p>If at any point during these 60 days you don't feel SonusZen is delivering on the promise we've
+                        made, just let us know. Our team will refund every penny, no questions asked and no need to
+                        return anything.</p>
+                </div>
+            </div>
+            <div class="trust-badges">
+                <img src="images/gmp.png" alt="GMP Certified Badge">
+                <img src="images/nat.png" alt="Natural Ingredients Badge">
+                <img src="images/foreign.png" alt="Foreign Production Badge">
+                <img src="images/gmo.png" alt="Non-GMO Badge">
+            </div>
+        </div>
+    </section>
+
+    <script>
+        (function () {
+            const currentDomain = window.location.hostname.replace(/^www\./, '');
+            let urlParams = ""; try { urlParams = window.top.location.search; } catch (e) { urlParams = window.location.search; }
+            const baseUrl = `https://lp.${currentDomain}`;
+            document.querySelectorAll('a[data-click-path]').forEach(link => {
+                const clickPath = link.getAttribute('data-click-path');
+                link.href = baseUrl + clickPath + urlParams;
+            });
+        })();
+    </script>
+
+</body>
+
+</html>
