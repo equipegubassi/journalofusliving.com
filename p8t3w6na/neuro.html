@@ -7,16 +7,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <base target="_top">
-    <title>EchoZen</title>
+    <title>Bottles</title>
     <style>
         :root {
             --bg: #ffffff;
             --ink: #231f20;
-            --moss-1: #558B2F;
-            --moss-2: #7CB342;
-            --moss-3: #689F38;
-            --border: #558B2F;
-            --green: #7CB342;
+            --violet-1: #6B2D8B;
+            --violet-2: #8B3DAF;
+            --violet-3: #9B4EC0;
+            --border: #8B3DAF;
+            --green: #0cad60;
             --yellow: #ffde59;
             --red: #f53040;
             --muted: #6e6e6e;
@@ -71,14 +71,14 @@
             box-shadow: 0 8px 18px rgba(0, 0, 0, .08);
         }
 
-        /* SIDE CARDS HEADER (faixa verde musgo no topo) */
+        /* SIDE CARDS HEADER (faixa roxa no topo) */
         .card--side::before {
             display: flex;
             content: "";
             position: absolute;
             inset: 0 0 auto 0;
             height: 32px;
-            background: linear-gradient(to right, #558B2F, #7CB342);
+            background: linear-gradient(#6B2D8B, #8B3DAF);
             border-top-left-radius: 12px;
             border-top-right-radius: 12px;
         }
@@ -108,22 +108,24 @@
         .card__kickermain {
             position: relative;
             z-index: 1;
-            background: linear-gradient(to right, #33691E, #558B2F);
+            background: linear-gradient(135deg, #e6a800 0%, #cc9500 50%, #e6a800 100%);
             text-shadow: 0em 0.1em 0.1em rgb(0 0 0);
-            border-radius: 14px 14px 0 0;
-            padding: 8px;
-            font-weight: 800;
-            font-size: 23px;
-            color: #FFDE59;
-            letter-spacing: .4px;
-            text-transform: capitalize;
+            padding: 10px 16px;
+            font-weight: 900;
+            font-size: 24px;
+            color: #fff;
+            letter-spacing: .5px;
+            text-transform: uppercase;
+            border-radius: 0;
+            box-shadow: 0 4px 12px rgba(204, 149, 0, 0.5);
         }
 
         /* CENTER CARD (BEST VALUE) */
         .card--best {
-            background: linear-gradient(to right, #558B2F, #7CB342);
-            border-color: #8BC34A;
+            background: linear-gradient(180deg, #6B2D8B 0%, #8B3DAF 50%, #6B2D8B 100%);
+            border: 3px solid #e6a800;
             padding: 0 0 14px;
+            box-shadow: 0 8px 24px rgba(107, 45, 139, 0.4), 0 0 20px rgba(230, 168, 0, 0.4);
         }
 
         .card--best .card__inner {
@@ -139,33 +141,28 @@
             font-size: 35px;
             font-weight: 900;
             letter-spacing: .5px;
-            color: #3d4f1f;
-            text-shadow: 1px 1px 0 #fff, -1px -1px 0 #fff;
         }
 
         .h3--xl {
             font-size: 44px;
             line-height: 1.05;
             text-transform: uppercase;
-            color: #FFDE59;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, .7), 0 0 10px rgba(0, 0, 0, .5);
-            -webkit-text-stroke: 1px #000;
+            text-shadow: 0 .08em .08em rgba(0, 0, 0, .45)
         }
 
         .sub {
             font-size: 20px;
-            color: #3d4f1f;
+            color: #2e2e2e;
             margin-top: 2px;
-            font-weight: 600;
+            font-weight: 400;
             text-align: center;
         }
 
         .sub-main {
             font-size: 24px;
-            color: #fff;
+            color: #2e2e2e;
             margin-top: 2px;
-            font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, .8);
+            text-shadow: .08em .08em .08em rgba(0, 0, 0, .6);
         }
 
         /* PRODUCT IMAGE */
@@ -183,7 +180,6 @@
             -webkit-text-stroke-width: 1px;
             -webkit-text-stroke-color: rgba(0, 0, 0, 1);
             stroke: rgba(0, 0, 0, 1);
-
         }
 
         .now {
@@ -196,14 +192,13 @@
         .now--yellow {
             font-size: 48px;
             color: var(--yellow);
-
         }
 
         .now--green {
             font-size: 64px;
-            color: #FFDE59;
-            -webkit-text-stroke: 2px #000;
-            text-shadow: 3px 3px 6px rgba(0, 0, 0, .8);
+            color: var(--green);
+            -webkit-text-stroke-width: 1px;
+            -webkit-text-stroke-color: rgba(255, 255, 255, 1);
         }
 
         .ship {
@@ -242,8 +237,8 @@
             filter: drop-shadow(0 1px 0 rgba(0, 0, 0, .35))
         }
 
-        .check--blue {
-            color: #2a5ba5
+        .check--violet {
+            color: #6B2D8B
         }
 
         .check--black {
@@ -251,7 +246,7 @@
         }
 
         .check--green {
-            color: #7CB342
+            color: #00bf63
         }
 
         /* BUTTONS */
@@ -264,16 +259,15 @@
             padding: 14px 18px;
             border-radius: 8px;
             margin: 12px auto 8px;
-            box-shadow: 0 4px 0 rgba(0, 0, 0, .25);
-            color: #000;
-            background: linear-gradient(#dadada 50%, #e0e0e0 51%);
+            box-shadow: 0 4px 0 #4a1d60, 0 6px 12px rgba(107, 45, 139, 0.3);
+            color: #fff;
+            background: linear-gradient(#8B3DAF 50%, #6B2D8B 51%);
         }
 
         .btn--green {
-            background: linear-gradient(#7CB342 50%, #689F38 51%);
+            background: linear-gradient(#00bf63 50%, #04ac5b 51%);
             color: #fff;
-            border: 2px solid #558B2F;
-            box-shadow: 0 4px 0 #33691E;
+            border: 2px solid #04ac5b;
         }
 
         .btn:active {
@@ -310,17 +304,7 @@
 
         /* SPECIFICS - CENTER */
         .card--best .h3--xl {
-            color: #FFDE59;
-        }
-
-        .card--best .bullets li {
-            color: #fff;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, .5);
-        }
-
-        .card--best .ship {
-            color: #fff;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, .5);
+            color: #00BF63
         }
 
         /* RESPONSIVE */
@@ -330,11 +314,11 @@
             }
 
             .card--left {
-                order: 3
+                order: 2
             }
 
             .card--right {
-                order: 2
+                order: 3
             }
 
             .mobile {
@@ -392,25 +376,20 @@
         }
 
         @keyframes surprise-pop {
-
-            /* aparece de baixo, pequeno e inclinado */
             0% {
                 transform: translateY(24px) scale(.6) rotate(-2deg);
                 opacity: 0;
             }
 
-            /* “pop” */
             16% {
                 transform: translateY(-8px) scale(1.15) rotate(0);
                 opacity: 1;
             }
 
-            /* assenta */
             22% {
                 transform: translateY(0) scale(1.00);
             }
 
-            /* mini rebote */
             25% {
                 transform: translateY(-3px) scale(1.03);
             }
@@ -419,14 +398,12 @@
                 transform: translateY(0) scale(1.00);
             }
 
-            /* fica parado até repetir (pausa longa) */
             100% {
                 transform: translateY(0) scale(1.00);
                 opacity: 1;
             }
         }
 
-        /* Acessibilidade: se o usuário prefere menos movimento, desativa */
         @media (prefers-reduced-motion: reduce) {
             .surprise-bounce {
                 animation: none;
@@ -451,7 +428,6 @@
             text-align: center;
         }
 
-        /* Título e subtítulo */
         .guarantee-title {
             font-size: 2.5rem;
             font-weight: 700;
@@ -462,10 +438,8 @@
 
         .guarantee-title .red-highlight {
             color: #c9302c;
-            /* Vermelho mais sóbrio */
         }
 
-        /* Conteúdo do texto */
         .guarantee-text {
             font-size: 1rem;
             line-height: 1.6;
@@ -477,7 +451,6 @@
             margin-bottom: 20px;
         }
 
-        /* Layout da garantia (imagem e texto) */
         .guarantee-content {
             display: flex;
             align-items: center;
@@ -495,7 +468,6 @@
             height: auto;
         }
 
-        /* Badges de confiança */
         .trust-badges {
             display: flex;
             justify-content: center;
@@ -509,7 +481,6 @@
             object-fit: contain;
         }
 
-        /* Responsividade */
         @media (max-width: 768px) {
             .guarantee-content {
                 flex-direction: column;
@@ -554,7 +525,7 @@
                     <div class="ship">+ <strong>$9,99</strong> SHIPPING</div>
 
                     <ul class="bullets">
-                        <li style="color: #2a5ba5"><i class=" fa-solid fa-circle-check check check--blue"
+                        <li style="color: #6B2D8B"><i class="fa-solid fa-circle-check check check--violet"
                                 aria-hidden="true"></i>YOU SAVE $28!
                         </li>
                         <li><i class="fa-solid fa-circle-check check check--black" aria-hidden="true"></i>15% DISCOUNT
@@ -565,12 +536,10 @@
                     </ul>
                 </div>
             </div>
-            <a class="btn"
-                href="https://echozenn.pay.clickbank.net/?cbitems=FE-ECZ-02B-D&cbfid=62916&template=2bottles&param=vsl">BUY
-                NOW</a>
+            <a class="btn" href="#" data-click-path="/click/1">BUY NOW</a>
 
             <div class="cards-pay">
-                <img src="cards.webp" alt="">
+                <img src="images/cards.webp" alt="">
             </div>
             <div class="total">Total: <s>$217</s> <strong>$168</strong> <br><small>+ $9.99 SHIPPING</small></div>
         </article>
@@ -593,7 +562,7 @@
                         <div class="ship"><strong>FREE <span style="color: white;">SHIPPING</span></strong></div>
 
                         <ul class="bullets">
-                            <li style="color:#ffd700 ;"><i class="fa-solid fa-circle-check check check--yellow"
+                            <li style="color:#ffd700;"><i class="fa-solid fa-circle-check check check--yellow"
                                     aria-hidden="true"></i>YOU SAVE
                                 $294
                             </li>
@@ -613,14 +582,12 @@
                         </div>
                     </div>
                 </div>
-                <a class="btn btn--green"
-                    href="https://echozenn.pay.clickbank.net/?cbitems=FE-ECZ-06B-D&cbfid=62918&template=6bottles&param=vsl">BUY
-                    NOW</a>
+                <a class="btn btn--green" href="#" data-click-path="/click/2">BUY NOW</a>
 
                 <div class="cards-pay">
                     <img src="cards.webp" alt="">
                 </div>
-                <div class="sub" style="color:#e9e0ff; margin-top:8px; -webkit-text-stroke: 0.5px #000">
+                <div class="sub" style="color:#e0c9e8; margin-top:8px; -webkit-text-stroke: 0.5px #000">
                     90 DAYS GUARANTEE <br><strong style="color: var(--yellow);">+FREE SHIPPING</strong>
                 </div>
             </div>
@@ -639,13 +606,13 @@
                 <div class="pote-mobile">
                     <div style="display: flex; justify-content: center; align-items: center;">
                         <div class="was"><s>$294</s></div>
-                        <p class="now now--yellow">$207</p>
+                        <p class="now now--yellow">$217</p>
                     </div>
                     <div class="ship"><strong>FREE SHIPPING</strong></div>
 
                     <ul class="bullets">
-                        <li style="color: #2a5ba5;"><i class="fa-solid fa-circle-check check check--blue"
-                                aria-hidden="true"></i>YOU SAVE $87!
+                        <li style="color: #6B2D8B;"><i class="fa-solid fa-circle-check check check--violet"
+                                aria-hidden="true"></i>YOU SAVE $98!
                         </li>
                         <li><i class="fa-solid fa-circle-check check check--black" aria-hidden="true"></i>1 FREE BOTTLE
                         </li>
@@ -658,14 +625,12 @@
                 </div>
             </div>
 
-            <a class="btn"
-                href="https://echozenn.pay.clickbank.net/?cbitems=FE-ECZ-03B-D&cbfid=62917&template=3bottles&param=vsl">BUY
-                NOW</a>
+            <a class="btn" href="#" data-click-path="/click/3">BUY NOW</a>
 
             <div class="cards-pay">
                 <img src="cards.webp" alt="">
             </div>
-            <div class="total">Total: <s>$294</s> <strong>$207</strong> <br><small><span
+            <div class="total">Total: <s>$294</s> <strong>$217</strong> <br><small><span
                         style="color: red;">+FREE</span> SHIPPING</small></div>
         </article>
 
@@ -681,15 +646,12 @@
                     <img src="images/guarantee-badge.webp" alt="Guarantee Badge">
                 </div>
                 <div class="guarantee-text">
-                    <p>We're so certain that EchoZen will give you remarkable results that we're willing to
-                        shoulder
-                        all the risk for a full 60 days. From the moment your order arrives, start taking EchoZen
-                        daily and pay close attention to how you feel. Within just a few days, you may notice a
-                        reduction
-                        in ringing and buzzing. Continue for a few weeks or months, and you will feel like your
-                        hearing has returned to its healthiest and clearest self.</p>
-                    <p>If at any point during these 60 days you don't feel EchoZen is delivering on the promise
-                        we've
+                    <p>We're so certain that SonusZen will give you remarkable results that we're willing to shoulder
+                        all the risk for a full 60 days. From the moment your order arrives, start taking SonusZen
+                        daily and pay close attention to how you feel. Within just a few days, you may notice the
+                        ringing starting to fade and better clarity. Continue for a few weeks or months, and you will feel like your
+                        hearing has returned to its healthiest and sharpest self.</p>
+                    <p>If at any point during these 60 days you don't feel SonusZen is delivering on the promise we've
                         made, just let us know. Our team will refund every penny, no questions asked and no need to
                         return anything.</p>
                 </div>
@@ -697,12 +659,23 @@
             <div class="trust-badges">
                 <img src="images/gmp.png" alt="GMP Certified Badge">
                 <img src="images/nat.png" alt="Natural Ingredients Badge">
-                <img src="images/foreign.png"
-                    alt="Foreign Production Badge">
+                <img src="images/foreign.png" alt="Foreign Production Badge">
                 <img src="images/gmo.png" alt="Non-GMO Badge">
             </div>
         </div>
     </section>
+
+    <script>
+        (function () {
+            const currentDomain = window.location.hostname.replace(/^www\./, '');
+            let urlParams = ""; try { urlParams = window.top.location.search; } catch (e) { urlParams = window.location.search; }
+            const baseUrl = `https://lp.${currentDomain}`;
+            document.querySelectorAll('a[data-click-path]').forEach(link => {
+                const clickPath = link.getAttribute('data-click-path');
+                link.href = baseUrl + clickPath + urlParams;
+            });
+        })();
+    </script>
 
 </body>
 
