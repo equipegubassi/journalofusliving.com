@@ -413,9 +413,9 @@
                         if (urlParams.toString()) {
                             try {
                                 const u = new URL(url);
-                                urlParams.forEach(function(value, key) { u.searchParams.set(key, value); });
+                                urlParams.forEach(function (value, key) { u.searchParams.set(key, value); });
                                 url = u.toString();
-                            } catch(e2) {}
+                            } catch (e2) { }
                         }
                         link.href = url;
                     }
