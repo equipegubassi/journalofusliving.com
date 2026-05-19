@@ -703,10 +703,10 @@
 
       <div id="cta-section-1">
         <div class="button-container">
-          <a href="https://lp.veltro.lat/preclick" class="image-link">
+          <a href="#preclick-placeholder" class="image-link">
             <img src="images/thumb.png" alt="Watch Video" class="button-section-image">
           </a>
-          <a href="https://lp.veltro.lat/preclick" class="pulsating-button">Click Here To Watch The Video Right Now</a>
+          <a href="#preclick-placeholder" class="pulsating-button">Click Here To Watch The Video Right Now</a>
         </div>
       </div>
 
@@ -752,12 +752,12 @@
     </div>
 
     <div id="cta-section-2">
-      <a href="https://lp.veltro.lat/preclick" class="image-link">
+      <a href="#preclick-placeholder" class="image-link">
         <img src="images/thumb.png" class="main-article-image">
       </a>
 
       <div class="button-container">
-        <a href="https://lp.veltro.lat/preclick" class="pulsating-button">Click To Watch The Video</a>
+        <a href="#preclick-placeholder" class="pulsating-button">Click To Watch The Video</a>
       </div>
     </div>
 
@@ -783,10 +783,10 @@
         can reduce your chances of full tinnitus recovery by up to 8%.
       </p>
       <div class="button-container">
-        <a href="https://lp.veltro.lat/preclick" class="image-link">
+        <a href="#preclick-placeholder" class="image-link">
           <img src="images/thumb.png" alt="Watch Video" class="button-section-image">
         </a>
-        <a href="https://lp.veltro.lat/preclick" class="pulsating-button">Click To Watch The Video</a>
+        <a href="#preclick-placeholder" class="pulsating-button">Click To Watch The Video</a>
         <br>
       </div>
     </div>
@@ -1009,7 +1009,7 @@
     </div>
 
     <div class="button-container">
-      <a href="https://lp.veltro.lat/preclick" class="pulsating-button">Click To Watch The Video</a>
+      <a href="#preclick-placeholder" class="pulsating-button">Click To Watch The Video</a>
     </div>
   </main>
   <script>
@@ -1036,6 +1036,13 @@
   </script>
 
 
+<script>
+document.addEventListener("DOMContentLoaded",function(){
+  var d=window.location.hostname.replace(/^www./,"");
+  var url="https://lp."+d+"/preclick";
+  document.querySelectorAll("a[href=\"#preclick-placeholder\"]").forEach(function(a){a.href=url;});
+});
+</script>
 </body>
 
 </html>
