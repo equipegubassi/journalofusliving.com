@@ -572,9 +572,7 @@
                     </ul>
                 </div>
             </div>
-            <a class="btn"
-                href="https://echozenn.pay.clickbank.net/?cbitems=FE-ECZ-02B-D&cbfid=62916&template=2bottles&param=vsl">BUY
-                NOW</a>
+            <a class="btn" href="#" data-click-path="/click/1">BUY NOW</a>
 
             <div class="cards-pay">
                 <img src="cards.webp" alt="">
@@ -620,9 +618,7 @@
                         </div>
                     </div>
                 </div>
-                <a class="btn btn--green"
-                    href="https://echozenn.pay.clickbank.net/?cbitems=FE-ECZ-06B-D&cbfid=62918&template=6bottles&param=vsl">BUY
-                    NOW</a>
+                <a class="btn btn--green" href="#" data-click-path="/click/2">BUY NOW</a>
 
                 <div class="cards-pay">
                     <img src="cards.webp" alt="">
@@ -665,9 +661,7 @@
                 </div>
             </div>
 
-            <a class="btn"
-                href="https://echozenn.pay.clickbank.net/?cbitems=FE-ECZ-03B-D&cbfid=62917&template=3bottles&param=vsl">BUY
-                NOW</a>
+            <a class="btn" href="#" data-click-path="/click/3">BUY NOW</a>
 
             <div class="cards-pay">
                 <img src="cards.webp" alt="">
@@ -709,7 +703,22 @@
                 <img src="https://getbraindefender.com/assets/pages/home/img/gmo.png" alt="Non-GMO Badge">
             </div>
         </div>
+    </section>
 
+    <script>
+        // Detecta o domínio atual e atualiza os links dinamicamente
+        (function () {
+            const currentDomain = window.location.hostname;
+            const urlParams = window.location.search; // Preserva os parâmetros da URL
+            const baseUrl = `https://lp.${currentDomain}`;
+
+            // Atualiza todos os links de compra
+            document.querySelectorAll('a[data-click-path]').forEach(link => {
+                const clickPath = link.getAttribute('data-click-path');
+                link.href = baseUrl + clickPath + urlParams;
+            });
+        })();
+    </script>
 </body>
 
 </html>
