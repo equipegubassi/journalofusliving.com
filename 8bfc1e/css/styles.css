@@ -1,0 +1,1656 @@
+:root {
+    --bg: #ffffff;
+    --ink: #231f20;
+    --moss-1: #558B2F;
+    --moss-2: #7CB342;
+    --moss-3: #689F38;
+    --border: #558B2F;
+    --green: #7CB342;
+    --green-2: #558B2F;
+    --yellow: #ffde59;
+    --red: #f53040;
+    --muted: #6e6e6e;
+}
+
+/* RESET & BASE */
+* {
+    box-sizing: border-box
+}
+
+body {
+    margin: 0;
+    font-family: Ubuntu, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--ink)
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block
+}
+
+a {
+    color: inherit;
+    text-decoration: none
+}
+
+s {
+    color: var(--red)
+}
+
+/* UTIL */
+.visually-hidden {
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+    white-space: nowrap
+}
+
+/* LAYOUT */
+.ofertas-container {
+    display: flex;
+    gap: 18px;
+    justify-content: center;
+    align-items: stretch;
+    padding: 18px;
+    flex-wrap: wrap
+}
+
+/* CARD BASE */
+.card {
+    position: relative;
+    width: 100%;
+    max-width: 360px;
+    background: #fff;
+    border: 2px solid var(--border);
+    border-radius: 14px;
+    padding: 14px 14px 16px;
+    text-align: center;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, .08)
+}
+
+/* SIDE CARDS HEADER (green/moss bar) */
+.card--side::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 32px;
+    background: linear-gradient(to right, #558B2F, #7CB342);
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px
+}
+
+.card__kicker,
+.card__kicker-less {
+    top: -14px;
+    position: relative;
+    z-index: 1;
+    font-weight: 800;
+    font-size: 20px;
+    color: #fff;
+    letter-spacing: .4px;
+    text-transform: capitalize
+}
+
+/* CENTER CARD (BEST VALUE) */
+.card--best {
+    background: linear-gradient(to right, #558B2F, #7CB342);
+    border-color: #8BC34A;
+    padding: 0 0 14px
+}
+
+.card--best .card__inner {
+    background: transparent;
+    padding: 14px 16px 18px;
+    border-radius: 15px;
+    color: #fff
+}
+
+.card__kickermain {
+    position: relative;
+    z-index: 1;
+    background: linear-gradient(to right, #33691E, #558B2F);
+    text-shadow: 0 .1em .1em rgb(0 0 0);
+    padding: 8px;
+    font-weight: 900;
+    font-size: 23px;
+    color: #FFDE59;
+    letter-spacing: .4px;
+    text-transform: uppercase;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px
+}
+
+/* TITLES */
+.h3 {
+    margin: 10px 0 4px;
+    font-size: 35px;
+    font-weight: 900;
+    letter-spacing: .5px;
+    color: #3d4f1f;
+    text-shadow: 1px 1px 0 #fff, -1px -1px 0 #fff;
+}
+
+.h3--xl {
+    font-size: 44px;
+    line-height: 1.05;
+    text-transform: uppercase;
+    text-shadow: 0 .08em .08em rgba(0, 0, 0, .45)
+}
+
+.sub {
+    font-size: 20px;
+    color: #3d4f1f;
+    margin-top: 2px;
+    font-weight: 600;
+    text-align: center
+}
+
+.sub-main {
+    font-size: 24px;
+    color: #e9e0ff;
+    margin-top: 2px;
+    text-shadow: .08em .08em .08em rgba(0, 0, 0, .6)
+}
+
+/* PRODUCT IMAGE */
+.pote {
+    width: 72%;
+    margin: 14px auto 6px
+}
+
+/* PRICES */
+.was {
+    font-weight: 900;
+    font-size: 28px;
+    color: var(--red);
+    margin: 6px 0;
+    text-shadow: 0 .06em .06em rgba(0, 0, 0, .45)
+}
+
+.now {
+    font-weight: 900;
+    margin: 0;
+    text-shadow: .08em .08em .08em rgba(0, 0, 0, .6);
+    -webkit-text-stroke: 2px #000
+}
+
+.now--yellow {
+    font-size: 48px;
+    color: var(--yellow)
+}
+
+.now--green {
+    font-size: 64px;
+    color: #FFDE59;
+    -webkit-text-stroke: 2px #000;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, .8);
+}
+
+.ship {
+    font-weight: 900;
+    margin: 8px 0 10px;
+    letter-spacing: .3px
+}
+
+/* BULLETS */
+.bullets {
+    list-style: none;
+    padding: 0;
+    margin: 8px auto 10px;
+    width: 88%;
+    text-align: left
+}
+
+.bullets li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 7px 0;
+    font-weight: 800
+}
+
+.check {
+    font-size: 16px;
+    line-height: 1;
+    flex: 0 0 18px;
+    display: inline-block
+}
+
+.check--yellow {
+    color: #ffd700;
+    filter: drop-shadow(0 1px 0 rgba(0, 0, 0, .35))
+}
+
+.check--blue {
+    color: #2a5ba5
+}
+
+.check--black {
+    color: #000
+}
+
+.check--green {
+    color: var(--green)
+}
+
+/* BUTTONS */
+.btn {
+    display: block;
+    text-align: center;
+    font-size: 25px;
+    font-weight: 900;
+    padding: 14px 18px;
+    border-radius: 8px;
+    margin: 12px auto 8px;
+    box-shadow: 0 4px 0 rgba(0, 0, 0, .25);
+    color: #000;
+    background: linear-gradient(#dadada 50%, #e0e0e0 51%)
+}
+
+.btn--green {
+    background: linear-gradient(#7CB342 50%, #689F38 51%);
+    color: #fff;
+    border: 2px solid #558B2F;
+    box-shadow: 0 4px 0 #33691E;
+}
+
+.btn:active {
+    transform: translateY(1px)
+}
+
+/* FOOT (cards) */
+.cards-pay {
+    width: 80%;
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin: 10px auto
+}
+
+.total {
+    margin-top: 8px;
+    font-weight: 900
+}
+
+.total s {
+    color: #000;
+    opacity: .8
+}
+
+/* RESPONSIVE */
+@media (max-width:900px) {
+    .card--best {
+        order: 1
+    }
+
+    .card--left {
+        order: 2
+    }
+
+    .card--right {
+        order: 3
+    }
+
+    .mobile {
+        display: flex;
+        gap: 10px
+    }
+
+    .card {
+        max-width: 100%
+    }
+
+    .pote-mobile {
+        width: 50%
+    }
+
+    .now--green {
+        font-size: 36px
+    }
+
+    .now--yellow {
+        font-size: 28px
+    }
+
+    .h3 {
+        font-size: 28px
+    }
+
+    .h3--xl {
+        font-size: 32px
+    }
+
+    .pote {
+        width: 100%
+    }
+
+    .ship {
+        font-size: 15px
+    }
+
+    .bullets li {
+        justify-content: flex-start;
+        align-items: flex-start;
+        font-size: 12px
+    }
+}
+
+/* Surprise bounce for attention */
+.surprise-bounce {
+    display: inline-block;
+    transform-origin: center bottom;
+    text-shadow: 0 2px 0 #000, 0 0 18px rgba(244, 190, 16, .45);
+    animation: surprise-pop 6s cubic-bezier(.34, 1.56, .64, 1) .2s infinite both;
+    will-change: transform
+}
+
+@keyframes surprise-pop {
+    0% {
+        transform: translateY(24px) scale(.6) rotate(-2deg);
+        opacity: 0
+    }
+
+    16% {
+        transform: translateY(-8px) scale(1.15) rotate(0);
+        opacity: 1
+    }
+
+    22% {
+        transform: translateY(0) scale(1)
+    }
+
+    25% {
+        transform: translateY(-3px) scale(1.03)
+    }
+
+    28% {
+        transform: translateY(0) scale(1)
+    }
+
+    100% {
+        transform: translateY(0) scale(1);
+        opacity: 1
+    }
+}
+
+@media (prefers-reduced-motion:reduce) {
+    .surprise-bounce {
+        animation: none
+    }
+}
+
+/* ======================= */
+/* SEÇÃO DE GARANTIA (Estilo Caixa Branca - ADAPTADO) */
+/* ======================= */
+.guarantee-section {
+    /* Fundo roxo da página principal */
+    background-color: #2a0a4a;
+    padding: 60px 20px;
+    margin-bottom: 80px;
+}
+
+.guarantee-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    /* FORÇA o empilhamento vertical */
+    align-items: center;
+    text-align: center;
+
+    /* --- Estilos da Caixa Branca --- */
+    background-color: #ffffff;
+    border: 2px solid #30195a;
+    /* Borda roxa escura */
+    border-radius: 20px;
+    /* Cantos arredondados */
+    padding: 40px;
+    /* Preenchimento interno */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    /* Sombra suave */
+}
+
+/* 1. Selo (do topo) */
+.guarantee-badge {
+    flex-shrink: 0;
+    width: 200px;
+    /* Tamanho do seu selo dourado */
+    margin-bottom: 25px;
+    /* Espaço abaixo dele */
+}
+
+.guarantee-badge img {
+    width: 100%;
+    height: auto;
+}
+
+/* 2. Título */
+.guarantee-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #30195a;
+    /* Cor roxa (da caixa) */
+    margin-bottom: 20px;
+    /* Mais espaço antes do texto */
+    line-height: 1.2;
+}
+
+.guarantee-title .red-highlight {
+    color: #c9302c;
+    /* Mantém o vermelho que você já usa */
+}
+
+/* 3. Texto da Garantia */
+.guarantee-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    max-width: 800px;
+    /* Limita a largura do texto */
+    margin-bottom: 30px;
+    color: #333;
+    text-align: left;
+    /* Alinhado à esquerda, como na imagem */
+}
+
+.guarantee-text p {
+    margin: 0 0 15px 0;
+    /* Espaço entre os parágrafos */
+}
+
+.guarantee-text p:last-child {
+    margin-bottom: 0;
+}
+
+/* 4. Selos Inferiores */
+.trust-badges {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 0;
+}
+
+.trust-badges img {
+    height: 50px;
+    /* Tamanho dos seus selos */
+    object-fit: contain;
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width:768px) {
+    .guarantee-container {
+        padding: 30px 25px;
+    }
+
+    .guarantee-badge {
+        width: 150px;
+        /* Reduz o selo no mobile */
+    }
+
+    .guarantee-text {
+        text-align: center;
+        /* Centraliza o texto no mobile */
+    }
+}
+
+@media (max-width:576px) {
+    .guarantee-title {
+        font-size: 1.8rem;
+    }
+}
+
+/* Sticky CTA (optional) */
+.sticky-cta {
+    position: sticky;
+    bottom: 0;
+    inset-inline: 0;
+    background: #ffffffee;
+    backdrop-filter: blur(4px);
+    border-top: 1px solid #eaeaea;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: .6rem;
+    z-index: 40
+}
+
+.sticky-cta .btn {
+    margin: 0;
+    min-width: 220px
+}
+
+/* ======================= */
+/* BANNER PROMO 'V'      */
+/* ======================= */
+.promo-banner {
+    /* Cor de fundo roxa escura da imagem */
+    background-color: #30195a;
+    color: #ffffff;
+    text-align: center;
+    font-family: 'Roboto', Arial, sans-serif;
+
+    /* Padding: mais na parte inferior para dar espaço para o 'V' */
+    padding: 40px 20px 60px 20px;
+
+    /* A mágica para a forma de 'V' */
+    clip-path: polygon(0% 0%, 100% 0%, 100% 85%, 50% 100%, 0% 85%);
+
+    /* Prefixo para compatibilidade com navegadores mais antigos */
+    -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 85%, 50% 100%, 0% 85%);
+}
+
+.promo-banner h2 {
+    font-size: 2em;
+    /* Ajuste o tamanho conforme desejar */
+    font-weight: 700;
+    margin: 0 0 10px 0;
+    text-transform: none;
+    /* Mantém o case original */
+}
+
+.promo-banner .highlight {
+    color: #f7df23;
+    /* Amarelo/Dourado */
+    font-weight: 900;
+}
+
+.promo-banner p {
+    font-size: 2.5em;
+    /* Esta linha parecia maior na imagem */
+    font-weight: 700;
+    margin: 0;
+    text-transform: none;
+    /* Mantém o case original */
+}
+
+/* ======================= */
+/* BARRA DE FRETE GRÁTIS  */
+/* ======================= */
+.shipping-promo-section {
+    background-color: #30195a;
+    color: #ffffff;
+    padding: 25px 20px;
+
+    padding-bottom: 0;
+}
+
+.shipping-promo-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+
+    max-width: 800px;
+    margin: 0 auto;
+
+    padding-bottom: 20px;
+}
+
+.shipping-icon img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}
+
+.shipping-text {
+    max-width: 500px;
+}
+
+.shipping-text .main-text {
+    font-size: 2em;
+    font-weight: 700;
+    line-height: 1.3;
+    margin: 0 0 5px 0;
+}
+
+.shipping-text .main-text strong {
+    color: #f7df23;
+    /* Amarelo/Dourado */
+}
+
+.shipping-text .sub-text {
+    font-size: 0.9em;
+    color: #e0e0e0;
+    /* Branco um pouco apagado */
+    font-style: italic;
+    margin: 0;
+}
+
+/* --- RESPONSIVIDADE (Frete) --- */
+@media (max-width: 768px) {
+    .shipping-promo-content {
+        flex-direction: column;
+        /* Empilha no mobile */
+        text-align: center;
+        gap: 15px;
+    }
+
+    .shipping-text .main-text {
+        font-size: 1.3em;
+        /* Reduz a fonte no mobile */
+    }
+}
+
+/* ======================= */
+/* SEÇÃO ESPECIALISTA    */
+/* ======================= */
+.expert-endorsement {
+    /* Esta seção pode ter o fundo roxo padrão */
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1200px;
+    margin-bottom: 80px;
+    padding: 0 32px;
+}
+
+.endorsement-box {
+    display: flex;
+    align-items: center;
+    background-color: #e6e0ff;
+    border: 3px solid #30195a;
+    border-radius: 20px;
+    padding: 40px;
+    gap: 30px;
+    position: relative;
+}
+
+.endorsement-text {
+    flex: 1;
+    color: #30195a;
+    border-right: 2px solid #2575e8;
+    padding-right: 30px;
+    position: relative;
+    z-index: 2;
+}
+
+.endorsement-text .quote {
+    font-size: 1.6em;
+    /* Tamanho da citação principal */
+    font-weight: 500;
+    line-height: 1.4;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.endorsement-text .recommendation {
+    font-size: 1em;
+    /* Tamanho do texto de recomendação */
+    font-weight: 400;
+    margin-bottom: 0;
+}
+
+.endorsement-image {
+    flex-basis: 300px;
+    /* Largura base para a área da imagem */
+    text-align: center;
+}
+
+.endorsement-image img {
+    max-width: 100%;
+    height: auto;
+    /* Se a sua imagem não for transparente, 
+um leve arredondamento pode ficar bom */
+    /* border-radius: 10px; */
+    position: absolute;
+    bottom: 0;
+    width: 260px;
+}
+
+/* ======================= */
+/* RESPONSIVIDADE (Especialista) */
+/* ======================= */
+@media (max-width: 768px) {
+
+    .promo-banner h2 {
+        font-size: 1em;
+        /* Ajuste o tamanho conforme desejar */
+        font-weight: 700;
+        margin: 0 0 10px 0;
+        text-transform: none;
+        /* Mantém o case original */
+    }
+
+    .endorsement-box {
+        flex-direction: column;
+        padding: 30px;
+        display: flex;
+        min-height: 500px;
+    }
+
+    .endorsement-text {
+        border-right: none;
+        padding-right: 0;
+        padding-bottom: 25px;
+        border-bottom: 2px solid #2575e8;
+        text-align: center;
+        z-index: auto;
+    }
+
+    .endorsement-image {
+        flex-basis: auto;
+        width: 100%;
+        position: static;
+        align-self: auto;
+        margin-top: auto;
+        padding-top: 25px;
+    }
+
+    .endorsement-image img {
+        position: static;
+        transform: none;
+        height: auto;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 250px;
+        width: 100%;
+    }
+}
+
+/* ============================================== */
+/* == SEÇÃO DE PROVA SOCIAL (DEPOIMENTOS) == */
+/* ============================================== */
+
+/* --- Configuração Geral da Seção --- */
+.social-proof-section {
+    background-color: #ffffff;
+    /* Fundo BRANCO */
+    color: #333333;
+    /* Texto ESCURO */
+    padding: 60px 20px;
+    /* Padding de 60px em cima/baixo, 20px nas laterais */
+}
+
+/* --- Títulos da Seção --- */
+.social-proof-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.social-proof-section .section-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #30195a;
+    /* Roxo escuro para contraste */
+    margin-bottom: 20px;
+}
+
+.section-badge {
+    display: inline-block;
+    background-color: #30195a;
+    color: #ffffff;
+    padding: 20px 45px;
+    border-radius: 50px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1.2em;
+}
+
+/* --- Imagem Cluster (Topo) --- */
+.testimonial-image-cluster {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.testimonial-image-cluster img {
+    max-width: 100%;
+    width: 700px;
+    height: auto;
+    margin: 0 auto;
+}
+
+.testimonial-list {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.testimonial-card {
+    display: flex;
+    align-items: flex-start;
+    background-color: #ffffff;
+
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 30px;
+    gap: 30px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.testimonial-avatar {
+    flex-shrink: 0;
+    /* Impede que o avatar encolha */
+}
+
+.testimonial-avatar img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #eeeeee;
+}
+
+.testimonial-content {
+    flex: 1;
+    /* Ocupa o resto do espaço */
+}
+
+.rating-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.rating-header .stars {
+    color: #FFC107;
+    font-size: 1.3em;
+    letter-spacing: 2px;
+}
+
+.rating-header .verified {
+    font-size: 0.95em;
+    color: #555555;
+    font-weight: 600;
+}
+
+.testimonial-text {
+    font-size: 1.05rem;
+    color: #333333;
+    line-height: 1.65;
+    margin: 0 0 18px 0;
+}
+
+.testimonial-text strong {
+    color: #000;
+}
+
+.testimonial-author {
+    font-size: 1.05em;
+    color: #000000;
+    font-weight: 700;
+    /* Negrito (700) */
+    margin: 0;
+}
+
+/* ============================================== */
+/* == RESPONSIVIDADE (SEÇÃO DE PROVA SOCIAL) == */
+/* ============================================== */
+@media (max-width: 768px) {
+    .social-proof-section {
+        padding: 40px 15px;
+        /* Menos padding no mobile */
+    }
+
+    .social-proof-section .section-title {
+        font-size: 1.8rem;
+        /* Título menor no mobile */
+    }
+
+    .testimonial-card {
+        flex-direction: column;
+        /* Empilha avatar e texto */
+        align-items: center;
+        /* Centraliza o avatar */
+        gap: 20px;
+        padding: 25px;
+        /* Padding menor no mobile */
+    }
+
+    .testimonial-avatar img {
+        width: 120px;
+        height: 120px;
+    }
+
+    .testimonial-content {
+        text-align: center;
+        /* Centraliza o autor */
+    }
+
+    .rating-header {
+        justify-content: center;
+        /* Centraliza estrelas/verified */
+    }
+
+    .testimonial-text {
+        text-align: center;
+        /* Centraliza o texto principal no mobile */
+    }
+}
+
+/* ============================================== */
+/* == SEÇÃO DE INGREDIENTES == */
+/* ============================================== */
+
+/* --- Configuração Geral da Seção --- */
+.ingredients-section {
+    background-color: #ffffff;
+    /* Fundo BRANCO */
+    color: #333333;
+    /* Texto ESCURO */
+    padding: 60px 20px;
+}
+
+/* --- Cabeçalho Sofisticado (Tipografia) --- */
+.ingredients-header {
+    text-align: center;
+    margin-bottom: 50px;
+    /* Mais espaço para "respirar" */
+
+    /* Afunila o texto para leitura mais fácil */
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 1. Título da Seção (Ajustado) */
+.ingredients-section .section-title {
+    font-size: 2.4rem;
+    /* Tamanho impactante */
+    font-weight: 700;
+    /* Semi-negrito */
+    color: #333333;
+    /* Cor de texto escura, mas suave */
+    margin: 0 0 10px 0;
+    /* Espaço curto até o subtítulo */
+    line-height: 1.3;
+}
+
+/* 1.1 Destaque no nome do produto */
+.ingredients-section .section-title span {
+    color: #30195a;
+    /* Cor roxa principal do tema */
+    font-weight: 800;
+    /* Mais pesado que o resto do título */
+}
+
+/* 2. Subtítulo (Ajustado para fluidez) */
+.ingredients-section .section-subtitle {
+    font-size: 1.25rem;
+    /* Tamanho maior para ser legível */
+    font-weight: 400;
+    /* Peso normal, para leveza */
+    color: #555555;
+    /* Cinza escuro, para hierarquia */
+    margin: 0;
+    line-height: 1.6;
+    /* Espaçamento entre linhas fluido */
+}
+
+/* 2.1 Destaques no subtítulo */
+.ingredients-section .section-subtitle span {
+    color: #333333;
+    /* Cor mais escura que o texto ao redor */
+    font-weight: 600;
+    /* Destaca, mas menos que o título principal */
+}
+
+/* --- Grade de Cards (Ingredientes) --- */
+.ingredients-grid {
+    display: grid;
+
+    /* 3 colunas no desktop */
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 25px;
+    /* Espaço entre os cards */
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* --- Card Individual --- */
+.ingredient-card {
+    background-color: #ffffff;
+
+    /* Borda roxa escura do seu tema */
+    border: 2px solid #30195a;
+
+    border-radius: 12px;
+    /* Cantos arredondados */
+    padding: 20px;
+
+    /* Sombra sutil */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+    /* Garante que os cards tenham a mesma altura */
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- Imagem do Card --- */
+.ingredient-image {
+    width: 100%;
+    height: 200px;
+    /* Altura fixa para alinhar */
+    object-fit: cover;
+    /* Garante que a imagem preencha */
+    border-radius: 8px;
+    /* Cantos arredondados na imagem */
+    margin-bottom: 20px;
+}
+
+/* --- Título do Card --- */
+.ingredient-title {
+    text-align: center;
+    color: #30195a;
+    /* Cor roxa */
+    font-size: 1.3em;
+    font-weight: 700;
+    margin: 0 0 15px 0;
+}
+
+/* --- Descrição do Card --- */
+.ingredient-description {
+    font-size: 0.95rem;
+    color: #333333;
+    line-height: 1.6;
+    margin: 0;
+    text-align: left;
+    /* Texto alinhado à esquerda */
+
+    /* Faz o texto preencher o espaço (para cards de mesma altura) */
+    flex-grow: 1;
+}
+
+
+/* ================================== */
+/* == RESPONSIVIDADE (Ingredientes) == */
+/* ================================== */
+
+@media (max-width: 992px) {
+
+    /* 2 colunas em tablets */
+    .ingredients-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* 1 coluna em celulares */
+    .ingredients-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Ajustes do cabeçalho no mobile */
+    .ingredients-section .section-title {
+        font-size: 2rem;
+    }
+
+    .ingredients-section .section-subtitle {
+        font-size: 1.1rem;
+    }
+}
+
+/* ======================= */
+/* SEÇÃO DE BENEFÍCIOS    */
+/* ======================= */
+.benefits-section {
+    /* Roxo escuro principal do tema */
+    background-color: #30195a;
+    color: #ffffff;
+    padding: 60px 20px;
+}
+
+/* --- Cabeçalho --- */
+.benefits-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.benefits-header .stars {
+    /* Cor amarela do tema */
+    color: #f7df23;
+    font-size: 1.5em;
+    margin: 0 0 10px 0;
+}
+
+.benefits-section .section-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+/* --- Grade de Cards --- */
+.benefits-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* --- Card Individual --- */
+.benefit-card {
+    background-color: #ffffff;
+    color: #333333;
+    /* Texto escuro dentro do card */
+    border-radius: 15px;
+    /* Cantos arredondados */
+    padding: 20px;
+    text-align: center;
+    flex-basis: 300px;
+    flex-grow: 1;
+    max-width: 350px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- Imagem do Card --- */
+.benefit-image {
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+/* --- Descrição do Card --- */
+.benefit-description {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #333333;
+    line-height: 1.5;
+    margin: 0;
+
+    flex-grow: 1;
+}
+
+/* ================================== */
+/* == RESPONSIVIDADE (Benefícios) == */
+/* ================================== */
+
+@media (max-width: 768px) {
+
+    /* 1 coluna em celulares */
+    .benefits-grid {
+        flex-direction: column;
+        align-items: center;
+        /* Centraliza a coluna */
+    }
+
+    .benefit-card {
+        /* O card ocupa a largura total no mobile */
+        flex-basis: 100%;
+        max-width: 400px;
+        /* Mas não mais que 400px */
+    }
+
+    .benefits-section .section-title {
+        font-size: 1.8rem;
+    }
+}
+
+/* ======================= */
+/* SEÇÃO DE OFERTA ESPECIAL */
+/* ======================= */
+.special-offer-section {
+    /* Esta seção pode ter um fundo branco ou cinza claro para destacar a caixa */
+    background-color: #f4f7f9;
+    padding: 60px 20px;
+}
+
+.offer-box {
+    /* A caixa roxa escura principal */
+    background-color: #30195a;
+    color: #ffffff;
+    border-radius: 20px;
+    /* Cantos arredondados */
+    padding: 40px;
+
+    /* Layout de 2 colunas */
+    display: flex;
+    align-items: center;
+    gap: 30px;
+
+    /* Centralização e Sombra */
+    max-width: 900px;
+    margin: 0 auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* --- Coluna 1: Conteúdo --- */
+.offer-content {
+    flex: 1;
+    /* Ocupa o espaço disponível */
+}
+
+.offer-title {
+    font-size: 2em;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+
+.offer-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 30px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    /* Espaço entre os itens da lista */
+}
+
+.offer-features li {
+    display: flex;
+    align-items: flex-start;
+    /* Alinha ícone com o topo do texto */
+    gap: 15px;
+}
+
+.offer-icon {
+    font-size: 1.5em;
+    /* Tamanho do ícone (emoji) */
+    line-height: 1.4;
+    color: #ffffff;
+    /* Cor branca, como na imagem */
+}
+
+.offer-features li p {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+.offer-features li p strong {
+    font-weight: 700;
+}
+
+/* --- Botão de CTA --- */
+.offer-cta-button {
+    display: block;
+    /* Ocupa a largura da coluna */
+    background: linear-gradient(to bottom, #f7df23, #f7941d);
+    /* Gradiente Amarelo/Laranja */
+    color: #000000;
+    /* Texto preto, como na imagem */
+    font-weight: bold;
+    padding: 15px 20px;
+    border-radius: 30px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 1.1em;
+    margin-bottom: 20px;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.offer-cta-button:hover {
+    transform: scale(1.03);
+}
+
+.offer-security {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    /* Alinha à esquerda */
+    gap: 10px;
+    font-size: 0.9em;
+    color: #e0e0e0;
+}
+
+.offer-icon-small {
+    font-size: 1.2em;
+}
+
+.offer-security p {
+    margin: 0;
+}
+
+/* --- Coluna 2: Imagem --- */
+.offer-image {
+    flex-basis: 40%;
+    flex-shrink: 0;
+    text-align: center;
+}
+
+.offer-image img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ================================== */
+/* == RESPONSIVIDADE (Oferta Especial) == */
+/* ================================== */
+@media (max-width: 768px) {
+    .offer-box {
+        flex-direction: column;
+        /* Empilha as colunas */
+        padding: 30px;
+    }
+
+    .offer-content {
+        order: 2;
+        /* Texto fica embaixo */
+        text-align: center;
+        /* Centraliza o texto no mobile */
+    }
+
+    .offer-features li {
+        text-align: left;
+        /* Mantém o texto da lista alinhado à esquerda */
+    }
+
+    .offer-security {
+        justify-content: center;
+        /* Centraliza o texto de segurança */
+    }
+
+    .offer-image {
+        order: 1;
+        /* Imagem fica em cima */
+        width: 100%;
+        max-width: 300px;
+        /* Limita o tamanho da imagem */
+    }
+}
+
+/* ======================= */
+/* SEÇÃO DE FAQ (PERGUNTAS)  */
+/* ======================= */
+.faq-section {
+    background-color: #30195a;
+    color: #ffffff;
+    padding: 60px 20px;
+}
+
+/* --- Cabeçalho --- */
+.faq-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.faq-icon {
+    font-size: 3.5em;
+    /* Ícone grande */
+    margin-bottom: 20px;
+    color: #ffffff;
+    /* Cor branca, como na imagem */
+}
+
+.faq-section .section-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0;
+}
+
+/* --- Accordion --- */
+.faq-accordion {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    background: #ffffff;
+    border-radius: 10px;
+    margin-bottom: 15px;
+
+    /* Previne um "salto" de layout ao abrir/fechar */
+    transition: all 0.3s ease-in-out;
+}
+
+.faq-item[open] {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.faq-question {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    cursor: pointer;
+
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #30195a;
+
+    list-style: none;
+}
+
+.faq-question::-webkit-details-marker {
+    display: none;
+}
+
+.faq-question:focus {
+    outline: none;
+}
+
+.icon-wrapper {
+    width: 20px;
+    text-align: center;
+    font-size: 1.1em;
+    transition: transform 0.3s ease;
+}
+
+.icon-minus {
+    display: none;
+}
+
+.faq-item[open] .icon-wrapper {
+    transform: rotate(180deg);
+}
+
+.faq-item[open] .faq-answer {
+    max-height: 700px;
+    opacity: 1;
+    padding-top: 0;
+    padding-bottom: 20px;
+}
+
+.faq-item[open] .icon-minus {
+    display: inline-block;
+}
+
+.faq-item[open] .icon-plus {
+    display: none;
+}
+
+/* --- Resposta (o <div>) --- */
+.faq-answer {
+    color: #333333;
+    font-size: 1rem;
+    line-height: 1.6;
+
+    padding: 0 20px 20px 55px;
+
+    overflow: hidden;
+
+    max-height: 0;
+    opacity: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+
+    transition: all 0.3s ease-out;
+}
+
+.faq-answer p {
+    margin: 0 0 15px 0;
+}
+
+.faq-answer p:last-child {
+    margin-bottom: 0;
+}
+
+/* --- CTA Final --- */
+.faq-final-cta {
+    text-align: center;
+    margin-top: 60px;
+}
+
+.cta-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 0 0 10px 0;
+}
+
+.cta-subtitle {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #e0e0e0;
+    margin: 0 0 15px 0;
+}
+
+.cta-main-line {
+    font-size: 2.5em;
+    font-weight: 700;
+    margin: 0;
+}
+
+/* ======================= */
+/* SEÇÃO DO RÓTULO (SUPPLEMENT FACTS) */
+/* ======================= */
+.supplement-facts-section {
+    background-color: #ffffff;
+    /* Fundo branco para contraste */
+    color: #333333;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.facts-header {
+    max-width: 700px;
+    margin: 0 auto 40px auto;
+}
+
+.supplement-facts-section .section-title {
+    color: #30195a;
+    /* Roxo do tema */
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.supplement-facts-section .section-subtitle {
+    font-size: 1.15rem;
+    color: #555555;
+    line-height: 1.6;
+}
+
+.label-image-wrapper {
+    max-width: 700px;
+    /* Ajuste a largura máxima do seu rótulo */
+    margin: 0 auto;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.label-image-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+    /* Remove espaço extra abaixo da imagem */
+}
+
+/* ======================= */
+/* SEÇÃO DE REFERÊNCIAS (Adaptado ao seu HTML) */
+/* ======================= */
+
+.references-section {
+    /* Fundo cinza-claro */
+    background-color: #f4f7f9;
+    color: #333333;
+    padding: 60px 20px;
+    margin-bottom: 20px;
+}
+
+.references-section .section-title {
+    text-align: center;
+    color: #30195a;
+    /* Roxo escuro */
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 40px;
+}
+
+/* --- A MUDANÇA PRINCIPAL --- */
+/* Esta é a sua DIV que contém as imagens */
+.references-content {
+    /* Virou o container flex (grid) */
+    display: flex;
+    flex-wrap: wrap;
+    /* Permite que os logos quebrem a linha */
+    justify-content: center;
+    /* Centraliza os logos horizontalmente */
+    align-items: center;
+    /* Centraliza os logos verticalmente */
+    gap: 30px;
+    /* Espaço entre os logos */
+
+    max-width: 1000px;
+    margin: 0 auto;
+
+    /* A "caixa" branca com sombra */
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+}
+
+/* Aplicamos o estilo diretamente na IMAGEM */
+.references-content img {
+    /* Cada logo ocupa um espaço, mas não estica demais */
+    flex-basis: 200px;
+    /* Largura base para cada logo */
+    flex-grow: 1;
+    /* Permite crescer um pouco se houver espaço */
+    max-width: 250px;
+    /* Limite máximo de largura */
+
+    /* Ajuste da imagem (para não distorcer) */
+    height: auto;
+
+    /* Removemos os estilos que "quebram" */
+    box-shadow: none;
+    border: none;
+    border-radius: 0;
+
+    /* Efeito profissional de opacidade */
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.references-content img:hover {
+    opacity: 1;
+    /* Opacidade total no hover */
+}
+
+/* ================================== */
+/* == RESPONSIVIDADE (Referências) == */
+/* ================================== */
+@media (max-width: 768px) {
+    .references-content {
+        /* Empilha os logos no mobile */
+        flex-direction: column;
+        gap: 30px;
+        /* Mais espaço vertical */
+        padding: 25px;
+    }
+
+    .references-content img {
+        flex-basis: 100%;
+        /* Ocupa a largura total */
+        max-width: 250px;
+        /* Mas limita a largura do logo */
+    }
+
+    .references-section .section-title {
+        font-size: 1.8rem;
+    }
+}

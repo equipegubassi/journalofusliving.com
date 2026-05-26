@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CNN News</title>
+  <script type="text/javascript">
+    // Carrega o script de tracking dinamicamente baseado no domínio atual
+    (function () {
+      const currentDomain = window.location.hostname;
+      const trackScript = document.createElement('script');
+      trackScript.type = 'text/javascript';
+      trackScript.src = `https://lp.${currentDomain}/track.js`;
+      document.head.appendChild(trackScript);
+    })();
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <script>!function (i, n) { i._plt = i._plt || (n && n.timeOrigin ? n.timeOrigin + n.now() : Date.now()) }(window, performance);</script>
+  <link rel="preload" href="https://scripts.converteai.net/5c43223a-5276-4ca3-8a25-4ff9ca0f860d/players/6a15d5a884a7bb613a20a7e7/v4/player.js" as="script">
+  <link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
+  <link rel="preload" href="https://cdn.converteai.net/5c43223a-5276-4ca3-8a25-4ff9ca0f860d/6a15d55a9d66e456af194e4d/main.m3u8" as="fetch">
+  <link rel="dns-prefetch" href="https://cdn.converteai.net">
+  <link rel="dns-prefetch" href="https://scripts.converteai.net">
+  <link rel="dns-prefetch" href="https://images.converteai.net">
+  <link rel="dns-prefetch" href="https://license.vturb.com">
+
+  <style>
+    #fb-comments {
+      font-family: "Segoe UI Historic", "Segoe UI", Helvetica, Arial,
+        sans-serif;
+      font-size: 13px;
+      width: 100%;
+      margin: auto;
+    }
+
+    #fb-comments .fb-heading {
+      margin: 2.125em 0 0.625em;
+      font-size: 1.1em;
+      color: #555;
+      font-weight: 400;
+      text-align: left;
+    }
+
+    #fb-comments .comments-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25em;
+      border: 0.0625em solid #e9ebee;
+      border-radius: 1.25em;
+      padding: 1.25em 1.25em 0;
+    }
+
+    #fb-comments .comment {
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      position: relative;
+      width: 100%;
+      max-width: 100%;
+      gap: 0.625em;
+    }
+
+    #fb-comments .comment.answer {
+      margin-left: 3.625em;
+      max-width: calc(100% - 3.625em);
+      margin-bottom: 0.75em;
+    }
+
+    #fb-comments .comment.answer+.answer {
+      margin-top: -0.75em;
+    }
+
+    #fb-comments .comment .user-avatar {
+      width: 3em;
+      height: 3em;
+      border-radius: 1.5625em;
+      -o-object-fit: cover;
+      object-fit: cover;
+    }
+
+    #fb-comments .comment .comment-data {
+      width: 100%;
+    }
+
+    #fb-comments .comment .comment-data .user {
+      font-weight: 400;
+      color: #050505;
+      border-radius: 0.75em;
+      background-color: #f0f2f5;
+      padding: 0.375em 0.75em 0.75em;
+    }
+
+    #fb-comments .comment .comment-data .user .name {
+      margin: 0;
+      color: #365899;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 16px;
+      cursor: pointer;
+      max-width: -webkit-max-content;
+      max-width: -moz-max-content;
+      max-width: max-content;
+    }
+
+    #fb-comments .comment .comment-data .user .text {
+      margin: 0;
+      font-weight: 400;
+      font-size: 16px;
+      color: #050505;
+      width: fit-content;
+      text-align: left;
+    }
+
+    #fb-comments .comment .comment-data .buttons {
+      margin: 0.125em 0 0 0.75em;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 0.3125em;
+    }
+
+    #fb-comments .comment .comment-data .buttons time,
+    #fb-comments .comment .comment-data .buttons like,
+    #fb-comments .comment .comment-data .buttons answer,
+    #fb-comments .comment .comment-data .buttons span {
+      font-size: 0.8em;
+      color: #888;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    #fb-comments .comment .comment-data .buttons like,
+    #fb-comments .comment .comment-data .buttons answer {
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    #fb-comments .comment .comment-data .buttons like[liked] {
+      color: #365899;
+    }
+
+    #fb-comments .comment .comment-data .buttons answer {
+      cursor: default;
+      position: relative;
+    }
+
+    /* Adjusted for the image like icon */
+    #fb-comments .comment likes {
+      position: absolute;
+      bottom: -0.625em;
+      right: 0;
+      background-color: #fff;
+      border: 0.125em solid #eaebef;
+      display: flex;
+      align-items: center;
+      font-size: 0.875em;
+      line-height: 1;
+      color: #888;
+      border-radius: 6.25em;
+      padding: 0.0625em 0.25em 0.0625em 0;
+    }
+
+    /* Style for the image icon inside <likes> */
+    #fb-comments .comment likes img.like-icon {
+      /* Added class .like-icon for specificity */
+      width: 18px;
+      /* Adjust as needed */
+      height: 18px;
+      /* Adjust as needed */
+      margin-right: 5px;
+      padding-left: 5px;
+      vertical-align: middle;
+      /* Align with text */
+    }
+
+    #fb-comments .comments-closed {
+      font-size: 0.875em;
+      font-weight: 600;
+      text-align: center;
+      margin: 0.9375em 0 5px;
+      color: #555;
+    }
+
+    @media (min-width: 576px) {
+      #fb-comments {
+        font-size: 16px;
+      }
+
+      #fb-comments .comment likes {
+        bottom: 0;
+      }
+    }
+  
+    .category-badge {
+      display: inline-block;
+      color: #cc0000;
+      font-weight: 700;
+      font-size: 0.875rem;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.5px;
+    }
+    .article-title {
+      font-size: 2.25rem;
+      font-weight: 900;
+      line-height: 1.1;
+      color: #111;
+      margin: 0 0 0.5rem 0;
+    }
+    .text-danger { color: #cc0000; }
+    .article-subtitle {
+      font-size: 1.25rem;
+      color: #555;
+      margin-bottom: 1rem;
+    }
+    .author-info {
+      display: flex;
+      align-items: center;
+      padding: 1rem 0;
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+      margin-bottom: 1.5rem;
+    }
+    .author-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      margin-right: 1rem;
+    }
+    .author-name {
+      font-weight: bold;
+      color: #333;
+      font-size: 0.95rem;
+    }
+    .author-name-highlight { color: #CC0000; }
+    .publish-date {
+      font-size: 0.85rem;
+      color: #666;
+      margin-top: 0.25rem;
+    }
+
+  </style>
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "wut8x68khq");
+</script>
+</head>
+
+<body>
+  <main>
+    <header class="main-header">
+      <div class="container">
+        <div class="header-content">
+          <div class="header-left">
+            <button id="menuBtn" class="mobile-menu-button" aria-label="Menu">
+              <i class="fas fa-bars"></i>
+            </button>
+            <a href="/" class="logo">
+              <span class="logo-cnn">CNN</span>
+              <span class="logo-health">Health</span>
+            </a>
+          </div>
+          <nav class="main-nav">
+            <a href="#">Wellness</a>
+            <a href="#">Food</a>
+            <a href="#">Fitness</a>
+            <a href="#">Medical News</a>
+          </nav>
+          <div class="header-right">
+            <a href="#" class="header-action">
+              <i class="far fa-clock"></i> <span>Watch</span>
+            </a>
+            <a href="#" class="header-action">
+              <i class="fas fa-headphones"></i> <span>Listen</span>
+            </a>
+            <a href="#" class="header-action">
+              <i class="fas fa-tv"></i>
+              <span class="live-tv-text">Live TV</span>
+            </a>
+            <button class="search-button" aria-label="Search">
+              <i class="fas fa-search"></i>
+            </button>
+            <a href="#" class="sign-in-button">Sign In</a>
+          </div>
+        </div>
+      </div>
+      <div id="mobileMenu" class="mobile-menu hidden">
+        <a href="#">Wellness</a>
+        <a href="#">Food</a>
+        <a href="#">Fitness</a>
+        <a href="#">Medical News</a>
+        <div class="mobile-menu-divider"></div>
+        <a href="#" class="mobile-action"><i class="far fa-clock"></i> <span>Watch</span></a>
+        <a href="#" class="mobile-action"><i class="fas fa-headphones"></i> <span>Listen</span></a>
+        <a href="#" class="mobile-action"><i class="fas fa-tv"></i>
+          <span class="live-tv-text">Live TV</span></a>
+        <a href="#" class="mobile-action"><i class="fas fa-user"></i> <span>Sign In</span></a>
+      </div>
+    </header>
+
+    <section class="hero-section">
+      <div class="container">
+        <div class="hero-content">
+          <h1 class="article-title">LIVE ON CNN: VIDEO EXPOSES <span class="text-danger">THE HIDDEN TRUTH</span> THAT MAY SILENCE TINNITUS IN MINUTES</h1>
+          <p class="article-subtitle">(Watch How to solve it below!)</p>
+          
+          <!-- Category Badge -->
+          <span class="category-badge">HEALTH</span>
+
+          <!-- Author Info -->
+          <div class="author-info">
+            <img src="images/headshot-400-anderson-cooper.webp" alt="Anderson Cooper" class="author-avatar">
+            <div class="author-details">
+              <div class="author-name">By <span class="author-name-highlight">Anderson Cooper</span> &bull; CNN Health</div>
+              <div class="publish-date">Published <span id="publish-date"></span> 2:00pm EDT</div>
+            </div>
+          </div>
+          <div class="video-container">
+            <div class="video-header">
+              <div class="video-header-left">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z">
+                  </path>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <span>EXCLUSIVE COVERAGE</span>
+              </div>
+              <span class="watch-now-badge">WATCH NOW</span>
+            </div>
+            <div class="video-player-wrapper">
+              <div id="fullscreenDiv" class="h-0 hidden"></div>
+              <div class="smartplayer-container" id="smartplayerId">
+                <vturb-smartplayer id="vid-6a15d5a884a7bb613a20a7e7" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"></vturb-smartplayer> <script type="text/javascript"> var s=document.createElement("script"); s.src="https://scripts.converteai.net/5c43223a-5276-4ca3-8a25-4ff9ca0f860d/players/6a15d5a884a7bb613a20a7e7/v4/player.js", s.async=!0,document.head.appendChild(s); </script>
+              </div>
+            </div>
+            <div class="video-footer">
+              <div class="live-indicator">
+                <span class="live-dot"></span> LIVE
+              </div>
+              <div class="recording-warning">
+                <div class="warning-dot"></div>
+                <span>RECORDING MAY BE REMOVED SOON</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <iframe class="esconder" id="potes-frame" src="index_1.html" style="height: 2000px; width: 100%; border: none"
+      scrolling="no" loading="lazy">
+    </iframe>
+    <div class="container">
+      <div id="fb-comments">
+        <div class="group-likes-share share-cnn">
+          <div class="comments-share">
+            <span class="post-comments">4521 Comments</span>
+            <span class="post-share">12 Shares</span>
+          </div>
+        </div>
+        <div class="comments-container">
+          <div class="comment" data-comment-id="1">
+            <img decoding="async" class="user-avatar" src="images/1.jpg" alt="Avatar do usuário">
+            <div class="comment-data">
+              <div class="user">
+                <p class="name">Madelyn Brown</p>
+                <p class="text">
+                  The ringing is completely gone after just 3 weeks. I
+                  honestly thought I'd have to live with this forever. Total
+                  silence is a blessing I didn’t think I’d feel again.
+                </p>
+              </div>
+              <div class="buttons">
+                <like>Like</like>
+                <span>·</span>
+                <answer>Reply</answer>
+                <span>·</span>
+                <time>3h</time>
+              </div>
+            </div>
+            <likes><i class="fa-solid fa-thumbs-up"></i> 58</likes>
+          </div>
+
+          <div class="comment" data-comment-id="2">
+            <img decoding="async" class="user-avatar" src="images/2.jpeg" alt="Avatar do usuário">
+            <div class="comment-data">
+              <div class="user">
+                <p class="name">Emma Miller</p>
+                <p class="text">
+                  Just started watching the video. Never heard tinnitus
+                  explained like this before. Makes a lot of sense so far.
+                </p>
+              </div>
+              <div class="buttons">
+                <like>Like</like>
+                <span>·</span>
+                <answer>Reply</answer>
+                <span>·</span>
+                <time>2h</time>
+              </div>
+            </div>
+            <likes><i class="fa-solid fa-thumbs-up"></i> 42</likes>
+          </div>
+
+          <div class="comment" data-comment-id="3">
+            <img decoding="async" class="user-avatar" src="images/3.jpeg" alt="Avatar do usuário">
+            <div class="comment-data">
+              <div class="user">
+                <p class="name">Charlotte Wilson</p>
+                <p class="text">
+                  I’ve tried everything—white noise, meds, even acupuncture.
+                  Nothing worked until this. 17 years of buzzing… gone in less
+                  than a month.
+                </p>
+              </div>
+              <div class="buttons">
+                <like>Like</like>
+                <span>·</span>
+                <answer>Reply</answer>
+                <span>·</span>
+                <time>1h</time>
+              </div>
+            </div>
+            <likes><i class="fa-solid fa-thumbs-up"></i> 73</likes>
+          </div>
+
+          <div class="comment" data-comment-id="4">
+            <img decoding="async" class="user-avatar" src="images/4.jpeg" alt="Avatar do usuário">
+            <div class="comment-data">
+              <div class="user">
+                <p class="name">Sophia Mia</p>
+                <p class="text">
+                  If this gives me even one quiet night, it’ll be worth it. So
+                  glad I stumbled on this.
+                </p>
+              </div>
+              <div class="buttons">
+                <like>Like</like>
+                <span>·</span>
+                <answer>Reply</answer>
+                <span>·</span>
+                <time>27 min</time>
+              </div>
+            </div>
+            <likes><i class="fa-solid fa-thumbs-up"></i> 31</likes>
+          </div>
+
+          <h4 class="comments-closed">
+            This post is no longer receiving comments!
+          </h4>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script>
+    (function () { 'use strict'; if (!window.location.search) return; function p() { try { document.querySelectorAll('a[href],button[onclick]').forEach(function (el) { try { if (!el.href || el.href.startsWith('#') || el.href.startsWith('javascript:') || el.href.startsWith('mailto:') || el.href.startsWith('tel:')) return; const url = new URL(el.href, window.location.origin); if (url.origin !== window.location.origin) return; const params = new URLSearchParams(window.location.search); params.forEach(function (v, k) { if (k && v && !url.searchParams.has(k)) url.searchParams.set(k, v) }); el.href = url.toString() } catch (e) { } }) } catch (e) { } } p(); if (window.MutationObserver) { const o = new MutationObserver(function (m) { let u = false; m.forEach(function (n) { if (n.addedNodes.length) u = true }); if (u) p() }); o.observe(document.body, { childList: true, subtree: true }) } })();
+  </script>
+  <script>
+    var delaySeconds = 1758;
+    var player = document.querySelector("vturb-smartplayer");
+
+    player.addEventListener("player:ready", function () {
+      player.displayHiddenElements(delaySeconds, [".esconder"], {
+        persist: true,
+      });
+    });
+  </script>
+  <script>
+    (function () {
+      const iframe = document.getElementById("potes-frame");
+
+      function setHeightToContent() {
+        try {
+          const doc = iframe.contentDocument || iframe.contentWindow.document;
+          if (!doc || !doc.body) return;
+          // altura total do conteúdo
+          const newHeight = Math.max(
+            doc.body.scrollHeight,
+            doc.documentElement.scrollHeight
+          );
+          iframe.style.height = newHeight + "px";
+        } catch (e) {
+          // Fallback caso seja cross-origin (não é o seu caso):
+          iframe.style.height = window.innerHeight + "px";
+        }
+      }
+
+      iframe.addEventListener("load", () => {
+        setHeightToContent();
+
+        // Observa mudanças dinâmicas no conteúdo do iframe
+        try {
+          const doc = iframe.contentDocument || iframe.contentWindow.document;
+          if (doc && doc.body) {
+            const ro = new ResizeObserver(setHeightToContent);
+            ro.observe(doc.body);
+          }
+        } catch (e) {
+          // ignora se não puder observar
+        }
+      });
+
+      // Recalcula em resize da janela
+      window.addEventListener("resize", setHeightToContent);
+    })();
+  </script>
+  <script src="js/script.js"></script>
+
+
+
+  <script>
+    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    const today = new Date();
+    const formattedDate = months[today.getMonth()] + ' ' + today.getDate() + ', ' + today.getFullYear();
+    const publishDateElement = document.getElementById('publish-date');
+    if (publishDateElement) publishDateElement.textContent = formattedDate;
+  </script>
+</body>
+
+</html>
