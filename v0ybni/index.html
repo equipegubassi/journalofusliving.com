@@ -45,10 +45,17 @@
     }
 
     main {
-      padding: 35px;
-      max-width: 700px;
+      padding: 35px 24px;
+      max-width: 1440px;
       margin: auto;
       background-color: #fff;
+    }
+
+    /* ===== DESKTOP (1024px+) — alinhado ao .inner do header ===== */
+    @media (min-width: 1024px) {
+      main {
+        padding: 40px 32px;
+      }
     }
 
     h2,
@@ -162,7 +169,7 @@
     .image-link img,
     .testimonial-image {
       width: 100%;
-      max-width: 700px;
+      max-width: 100%;
       display: block;
       margin: 20px auto;
       border-radius: 5px;
@@ -177,11 +184,13 @@
     }
 
     .interview-row.oz {
-      flex-direction: row-reverse; /* photo on the right */
+      flex-direction: row-reverse;
+      /* photo on the right */
     }
 
     .interview-row.cooper {
-      flex-direction: row; /* photo on the left */
+      flex-direction: row;
+      /* photo on the left */
     }
 
     .interview-row .interview-photo-link {
@@ -597,25 +606,38 @@
         <div class="nav-row nav-row-upper">
           <div class="inner">
             <div class="branding-inline">
-              <a title="Latest Breaking News Today from Fox News" class="logo-link" href="https://lp.journalofliving.com/preclick">
+              <a title="Latest Breaking News Today from Fox News" class="logo-link"
+                href="https://lp.journalofliving.com/preclick">
                 <img src="images/fox-news-logo.png" alt="Fox News Logo" class="main-logo">
               </a>
             </div>
             <div class="primary-nav">
               <nav>
                 <ul>
-                  <li class="menu-item"><a href="https://lp.journalofliving.com/preclick" class="header-vsl-link">U.S.</a></li>
-                  <li class="menu-item"><a href="https://lp.journalofliving.com/preclick" class="header-vsl-link">Politics</a></li>
-                  <li class="menu-item"><a href="https://lp.journalofliving.com/preclick" class="header-vsl-link">World</a></li>
-                  <li class="menu-item"><a href="https://lp.journalofliving.com/preclick" class="header-vsl-link">Opinion</a></li>
-                  <li class="menu-item"><a href="https://lp.journalofliving.com/preclick" class="header-vsl-link">Media</a></li>
-                  <li class="menu-item"><a href="https://lp.journalofliving.com/preclick" class="header-vsl-link">Entertainment</a></li>
-                  <li class="menu-item"><a href="https://lp.journalofliving.com/preclick" class="header-vsl-link">Sports</a></li>
-                  <li class="menu-item"><a href="https://lp.journalofliving.com/preclick" class="header-vsl-link">Lifestyle</a></li>
-                  <li class="menu-item"><a href="https://lp.journalofliving.com/preclick" class="header-vsl-link">Health</a></li>
-                  <li class="menu-item"><a href="https://lp.journalofliving.com/preclick" class="header-vsl-link">Video</a></li>
-                  <li class="menu-item"><a href="https://lp.journalofliving.com/preclick" class="header-vsl-link">AI</a></li>
-                  <li class="menu-item"><a href="https://lp.journalofliving.com/preclick" class="header-vsl-link">More</a></li>
+                  <li class="menu-item"><a href="https://lp.journalofliving.com/preclick"
+                      class="header-vsl-link">U.S.</a></li>
+                  <li class="menu-item"><a href="https://lp.journalofliving.com/preclick"
+                      class="header-vsl-link">Politics</a></li>
+                  <li class="menu-item"><a href="https://lp.journalofliving.com/preclick"
+                      class="header-vsl-link">World</a></li>
+                  <li class="menu-item"><a href="https://lp.journalofliving.com/preclick"
+                      class="header-vsl-link">Opinion</a></li>
+                  <li class="menu-item"><a href="https://lp.journalofliving.com/preclick"
+                      class="header-vsl-link">Media</a></li>
+                  <li class="menu-item"><a href="https://lp.journalofliving.com/preclick"
+                      class="header-vsl-link">Entertainment</a></li>
+                  <li class="menu-item"><a href="https://lp.journalofliving.com/preclick"
+                      class="header-vsl-link">Sports</a></li>
+                  <li class="menu-item"><a href="https://lp.journalofliving.com/preclick"
+                      class="header-vsl-link">Lifestyle</a></li>
+                  <li class="menu-item"><a href="https://lp.journalofliving.com/preclick"
+                      class="header-vsl-link">Health</a></li>
+                  <li class="menu-item"><a href="https://lp.journalofliving.com/preclick"
+                      class="header-vsl-link">Video</a></li>
+                  <li class="menu-item"><a href="https://lp.journalofliving.com/preclick" class="header-vsl-link">AI</a>
+                  </li>
+                  <li class="menu-item"><a href="https://lp.journalofliving.com/preclick"
+                      class="header-vsl-link">More</a></li>
                 </ul>
               </nav>
             </div>
@@ -624,7 +646,8 @@
                 <i class="fas fa-search"></i>
               </div>
               <!-- Changed from "Watch TV" to "Watch Dr. Oz Interview" -->
-              <a href="https://lp.journalofliving.com/preclick" class="btn-watch header-vsl-link" style="text-decoration:none;">Watch Dr. Oz Interview</a>
+              <a href="https://lp.journalofliving.com/preclick" class="btn-watch header-vsl-link"
+                style="text-decoration:none; text-align:center;">Watch Dr. Oz Interview</a>
             </div>
           </div>
         </div>
@@ -737,8 +760,10 @@
           <img src="images/Dr. Oz Speaking 1.png" class="interview-image" alt="Dr. Oz">
         </a>
         <p>
-          <span class="secondary-text-bold">Dr. Oz:</span> <em>"What changed was Kent Taylor. When I read that he took his
-            own life because of the same ringing Lisa was hearing every night — a man who had everything, who built Texas
+          <span class="secondary-text-bold">Dr. Oz:</span> <em>"What changed was Kent Taylor. When I read that he took
+            his
+            own life because of the same ringing Lisa was hearing every night — a man who had everything, who built
+            Texas
             Roadhouse from nothing, who gave up his salary during COVID to help his employees — and the tinnitus still
             won… I knew Lisa was next. I couldn't let it happen."</em>
         </p>
@@ -762,9 +787,11 @@
         </a>
         <p>
           <span class="secondary-text-bold">Dr. Oz:</span> <em>"Lisa's father had suffered with tinnitus for over a
-            decade. After losing him, I made a promise: I would find the real cause or die trying. After months buried in
+            decade. After losing him, I made a promise: I would find the real cause or die trying. After months buried
+            in
             obscure biological studies, I stumbled onto something no one was talking about. A natural combination so
-            unlikely, so ordinary, it almost felt like a joke. A simple mixture of honey and Vick's VapoRub. Two everyday
+            unlikely, so ordinary, it almost felt like a joke. A simple mixture of honey and Vick's VapoRub. Two
+            everyday
             items — but together, something far more powerful than anyone realized."</em>
         </p>
       </div>
@@ -785,7 +812,8 @@
           <img src="images/Dr. Oz Speaking 3.png" class="interview-image" alt="Dr. Oz">
         </a>
         <p>
-          <span class="secondary-text-bold">Dr. Oz:</span> <em>"In 21 days, the high-pitched ringing softened. In 5 weeks,
+          <span class="secondary-text-bold">Dr. Oz:</span> <em>"In 21 days, the high-pitched ringing softened. In 5
+            weeks,
             Lisa experienced full breathtaking silence — for the first time in 3 years. On day 17, she woke up and her
             eyes were different. 'For the first time in 3 years, I can hear the silence,' she whispered. That afternoon,
             she played piano for the first time in years, tears streaming down her face."</em>
@@ -808,7 +836,8 @@
           <img src="images/Dr. Oz Speaking 4.png" class="interview-image" alt="Dr. Oz">
         </a>
         <p>
-          <span class="secondary-text-bold">Dr. Oz:</span> <em>"Exactly. Thanks to this natural protocol, my wife is back.
+          <span class="secondary-text-bold">Dr. Oz:</span> <em>"Exactly. Thanks to this natural protocol, my wife is
+            back.
             The ringing is gone, her sleep returned, the fog lifted — she finally feels like herself again. I recorded a
             full free video explaining how to do it at home, and I'd like to ask you to roll a clip."</em>
         </p>
@@ -821,7 +850,8 @@
         </a>
         <p>
           <span class="secondary-text-bold">Anderson Cooper:</span> <em>"How could I say no? Of course. So if you or
-            someone you love has been struggling with constant ringing, tinnitus, or even early hearing loss, please watch
+            someone you love has been struggling with constant ringing, tinnitus, or even early hearing loss, please
+            watch
             this video now. Production, roll the Vick's Trick video."</em>
         </p>
       </div>
@@ -854,14 +884,16 @@
         See Other Celebrities Who Also Silenced Their Tinnitus
       </h3>
       <div class="testimonial">
-        <a href="https://lp.journalofliving.com/preclick" class="image-link header-vsl-link"><img src="images/Eric Clapton.png" alt="Eric Clapton" class="testimonial-image"></a>
+        <a href="https://lp.journalofliving.com/preclick" class="image-link header-vsl-link"><img
+            src="images/Eric Clapton.png" alt="Eric Clapton" class="testimonial-image"></a>
         <p>"I've suffered with tinnitus since my early 40s. I spent years bouncing between ENT doctors, sound therapy,
           meditation apps, and expensive supplements. Nothing made a real difference — until I followed Dr. Oz's Vicks
           Trick together with the NeuroSilence protocol. Within a few weeks, the piercing tone faded into a soft
           background hum, and for the first time in years I slept through the night."</p>
       </div>
       <div class="testimonial">
-        <a href="https://lp.journalofliving.com/preclick" class="image-link header-vsl-link"><img src="images/Whoopi GoldBerd.png" alt="Whoopi Goldberg" class="testimonial-image"></a>
+        <a href="https://lp.journalofliving.com/preclick" class="image-link header-vsl-link"><img
+            src="images/Whoopi GoldBerd.png" alt="Whoopi Goldberg" class="testimonial-image"></a>
         <p>"It feels like someone finally reached in and turned the volume knob down in my brain. I'm so grateful this
           method was finally made public. People like me deserve more than 'learn to live with it.'"</p>
       </div>
@@ -976,7 +1008,8 @@
             <div class="comment-data">
               <div class="user">
                 <p class="name">Emma Wilson</p>
-                <p class="text">My mom forgot her birthday last year. I was heartbroken. This video gave me hope I didn't know existed. Watch it before it's gone.</p>
+                <p class="text">My mom forgot her birthday last year. I was heartbroken. This video gave me hope I
+                  didn't know existed. Watch it before it's gone.</p>
               </div>
               <div class="buttons">
                 <like>Like</like> · <answer>Reply</answer> · <time>2h</time>
@@ -989,7 +1022,8 @@
             <div class="comment-data">
               <div class="user">
                 <p class="name">Samantha Clark</p>
-                <p class="text">This hit me hard. The stories, the science — it all just clicked. Please, if you have aging parents, watch it.</p>
+                <p class="text">This hit me hard. The stories, the science — it all just clicked. Please, if you have
+                  aging parents, watch it.</p>
               </div>
               <div class="buttons">
                 <like>Like</like> · <answer>Reply</answer> · <time>1h</time>
@@ -1002,7 +1036,8 @@
             <div class="comment-data">
               <div class="user">
                 <p class="name">George Freeman</p>
-                <p class="text">I thought it was just aging… until I saw this. Now I know better. You NEED to see this video before it disappears.</p>
+                <p class="text">I thought it was just aging… until I saw this. Now I know better. You NEED to see this
+                  video before it disappears.</p>
               </div>
               <div class="buttons">
                 <like>Like</like> · <answer>Reply</answer> · <time>1h</time>
@@ -1015,7 +1050,8 @@
             <div class="comment-data">
               <div class="user">
                 <p class="name">Sophia Davis</p>
-                <p class="text">Dr. Simmons said what no one else is willing to. Finally someone tells the truth about memory loss. Powerful stuff.</p>
+                <p class="text">Dr. Simmons said what no one else is willing to. Finally someone tells the truth about
+                  memory loss. Powerful stuff.</p>
               </div>
               <div class="buttons">
                 <like>Like</like> · <answer>Reply</answer> · <time>1h</time>
@@ -1028,7 +1064,8 @@
             <div class="comment-data">
               <div class="user">
                 <p class="name">Benjamin Smith</p>
-                <p class="text">I forgot my own son's birthday. I felt broken. This video was a lifeline. Please… watch it now. For you. For them.</p>
+                <p class="text">I forgot my own son's birthday. I felt broken. This video was a lifeline. Please… watch
+                  it now. For you. For them.</p>
               </div>
               <div class="buttons">
                 <like>Like</like> · <answer>Reply</answer> · <time>2h</time>
@@ -1041,7 +1078,8 @@
             <div class="comment-data">
               <div class="user">
                 <p class="name">Rachel Brown</p>
-                <p class="text">I went from getting lost in the grocery store to confidently navigating a road trip. It's not magic — it's neuroscience. Try it.</p>
+                <p class="text">I went from getting lost in the grocery store to confidently navigating a road trip.
+                  It's not magic — it's neuroscience. Try it.</p>
               </div>
               <div class="buttons">
                 <like>Like</like> · <answer>Reply</answer> · <time>55m</time>
@@ -1054,7 +1092,8 @@
             <div class="comment-data">
               <div class="user">
                 <p class="name">Oliver Anderson</p>
-                <p class="text">Walking into a room and forgetting why… that was me daily. Now I feel like I got my brain back. Just watch the video.</p>
+                <p class="text">Walking into a room and forgetting why… that was me daily. Now I feel like I got my
+                  brain back. Just watch the video.</p>
               </div>
               <div class="buttons">
                 <like>Like</like> · <answer>Reply</answer> · <time>50m</time>
@@ -1067,7 +1106,8 @@
             <div class="comment-data">
               <div class="user">
                 <p class="name">Olivia Johnson</p>
-                <p class="text">Embarrassed. Ashamed. Afraid. That was me before. Now? I feel clear. In control. Don't wait another day. This is your sign.</p>
+                <p class="text">Embarrassed. Ashamed. Afraid. That was me before. Now? I feel clear. In control. Don't
+                  wait another day. This is your sign.</p>
               </div>
               <div class="buttons">
                 <like>Like</like> · <answer>Reply</answer> · <time>45m</time>
@@ -1080,7 +1120,10 @@
             <div class="comment-data">
               <div class="user">
                 <p class="name">James Wilson</p>
-                <p class="text">My wife's tinnitus destroyed her sleep, her mood, and eventually our marriage. Not because we didn't love each other, but because exhaustion changes people. Hearing that there may have been another explanation this whole time makes me furious. How many lives have been quietly damaged because "there's nothing we can do"?</p>
+                <p class="text">My wife's tinnitus destroyed her sleep, her mood, and eventually our marriage. Not
+                  because we didn't love each other, but because exhaustion changes people. Hearing that there may have
+                  been another explanation this whole time makes me furious. How many lives have been quietly damaged
+                  because "there's nothing we can do"?</p>
               </div>
               <div class="buttons">
                 <like>Like</like> · <answer>Reply</answer> · <time>38m</time>
@@ -1093,7 +1136,9 @@
             <div class="comment-data">
               <div class="user">
                 <p class="name">Linda Rodriguez</p>
-                <p class="text">I'm 67. Had ringing and buzzing for almost 4 years. Brain fog, anxiety, no sleep. Watched this interview and everything finally clicked. I don't feel crazy anymore. Just understanding what's happening to my nervous system brought relief. This information matters.</p>
+                <p class="text">I'm 67. Had ringing and buzzing for almost 4 years. Brain fog, anxiety, no sleep.
+                  Watched this interview and everything finally clicked. I don't feel crazy anymore. Just understanding
+                  what's happening to my nervous system brought relief. This information matters.</p>
               </div>
               <div class="buttons">
                 <like>Like</like> · <answer>Reply</answer> · <time>30m</time>
@@ -1106,7 +1151,9 @@
             <div class="comment-data">
               <div class="user">
                 <p class="name">Michael Anderson</p>
-                <p class="text">I was skeptical at first. Another dramatic story, right? But then I thought about it. Dr. Oz doesn't need attention. He didn't gain anything by exposing this. He talked because it affected his family. That's not marketing. That's desperation turning into truth.</p>
+                <p class="text">I was skeptical at first. Another dramatic story, right? But then I thought about it.
+                  Dr. Oz doesn't need attention. He didn't gain anything by exposing this. He talked because it affected
+                  his family. That's not marketing. That's desperation turning into truth.</p>
               </div>
               <div class="buttons">
                 <like>Like</like> · <answer>Reply</answer> · <time>22m</time>
@@ -1119,7 +1166,9 @@
             <div class="comment-data">
               <div class="user">
                 <p class="name">Patricia Garcia</p>
-                <p class="text">My dad is 74 and has had tinnitus since his late 60s. Doctors told us to "ignore it." We watched this interview together. For the first time, he said, "So it's not just in my head." I can't explain what that meant to him. Everyone dealing with tinnitus deserves to hear this.</p>
+                <p class="text">My dad is 74 and has had tinnitus since his late 60s. Doctors told us to "ignore it." We
+                  watched this interview together. For the first time, he said, "So it's not just in my head." I can't
+                  explain what that meant to him. Everyone dealing with tinnitus deserves to hear this.</p>
               </div>
               <div class="buttons">
                 <like>Like</like> · <answer>Reply</answer> · <time>18m</time>
@@ -1132,7 +1181,9 @@
             <div class="comment-data">
               <div class="user">
                 <p class="name">David Martinez</p>
-                <p class="text">Why is this not being talked about everywhere? Probably because there's more money in long-term management than real answers. Sound devices, therapies, appointments forever. A nervous system explanation changes everything.</p>
+                <p class="text">Why is this not being talked about everywhere? Probably because there's more money in
+                  long-term management than real answers. Sound devices, therapies, appointments forever. A nervous
+                  system explanation changes everything.</p>
               </div>
               <div class="buttons">
                 <like>Like</like> · <answer>Reply</answer> · <time>12m</time>
@@ -1145,7 +1196,9 @@
             <div class="comment-data">
               <div class="user">
                 <p class="name">Susan Taylor</p>
-                <p class="text">I showed this to my audiologist, expecting him to dismiss it. Instead, he watched the whole thing quietly and said, "This actually makes sense." He admitted many patients don't respond to standard approaches. That honesty alone was shocking.</p>
+                <p class="text">I showed this to my audiologist, expecting him to dismiss it. Instead, he watched the
+                  whole thing quietly and said, "This actually makes sense." He admitted many patients don't respond to
+                  standard approaches. That honesty alone was shocking.</p>
               </div>
               <div class="buttons">
                 <like>Like</like> · <answer>Reply</answer> · <time>8m</time>
@@ -1158,7 +1211,10 @@
             <div class="comment-data">
               <div class="user">
                 <p class="name">William Brown</p>
-                <p class="text">My wife lived with severe tinnitus until the day she passed. It robbed her of sleep and peace for years. Finding out now that there may have been another way to understand what was happening is heartbreaking. Please share this. No one should suffer in silence because the system stopped asking questions.</p>
+                <p class="text">My wife lived with severe tinnitus until the day she passed. It robbed her of sleep and
+                  peace for years. Finding out now that there may have been another way to understand what was happening
+                  is heartbreaking. Please share this. No one should suffer in silence because the system stopped asking
+                  questions.</p>
               </div>
               <div class="buttons">
                 <like>Like</like> · <answer>Reply</answer> · <time>5m</time>
@@ -1171,7 +1227,9 @@
             <div class="comment-data">
               <div class="user">
                 <p class="name">Jennifer White</p>
-                <p class="text">I'm 55. Started experiencing ringing, pressure, and panic last year. My doctor suggested antidepressants. I refused. After watching this interview, I finally feel validated. I'm not weak. My nervous system has been stuck in overdrive. This gave me hope I didn't have before.</p>
+                <p class="text">I'm 55. Started experiencing ringing, pressure, and panic last year. My doctor suggested
+                  antidepressants. I refused. After watching this interview, I finally feel validated. I'm not weak. My
+                  nervous system has been stuck in overdrive. This gave me hope I didn't have before.</p>
               </div>
               <div class="buttons">
                 <like>Like</like> · <answer>Reply</answer> · <time>2m</time>

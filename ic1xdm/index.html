@@ -43,10 +43,17 @@
     }
 
     main {
-      padding: 35px;
-      max-width: 700px;
+      padding: 35px 1rem;
+      max-width: 1200px;
       margin: auto;
       background-color: #fff;
+    }
+
+    /* ===== DESKTOP (1024px+) — alinhado ao .container do header ===== */
+    @media (min-width: 1024px) {
+      main {
+        padding: 40px 1rem;
+      }
     }
 
     h2,
@@ -160,7 +167,7 @@
     .image-link img,
     .testimonial-image {
       width: 100%;
-      max-width: 700px;
+      max-width: 100%;
       display: block;
       margin: 20px auto;
       border-radius: 5px;
